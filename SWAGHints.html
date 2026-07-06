@@ -1,0 +1,127 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<h1><strong>BloomingCon SWAG Hint System</strong></h1>
+<p>&nbsp;</p>
+
+<h2><a href="#" class="toggle-btn" data-target="Little500">Little 500 Round</a></h2>
+<div id="Little500" class="toggle-content" style="display: none;">
+	<h3><a href="#" class="toggle-btn" data-target="HOOSIER">Hoosier the Bison</a></h3>
+	<div id="HOOSIER" class="toggle-content" style="display: none;">
+		<h4><a href="#" class="toggle-btn" data-target="HOOSIERHint1">Hint 1</a></h4>
+		<div id="HOOSIERHint1" class="toggle-content" style="display: none;">
+		Of each grid's four connected sets of items, the set not easily linked to one of the three mascots (particularly hinted by the large word in its description) makes up half the clue to your final answer.
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="HOOSIERHint2">Hint 2</a></h4>
+		<div id="HOOSIERHint2" class="toggle-content" style="display: none;">
+		In the first grid, JOE Bruin might also like words like Cool or Schmo. In the second grid, Bucky from WISCONSIN really likes Brie Larsen.
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="HOOSIERHint3">Hint 3</a></h4>
+		<div id="HOOSIERHint3" class="toggle-content" style="display: none;">
+		In the first grid, Herky the HAWKEYE likes one of Brie Larson's characters. In the second grid, GOLDY the Gopher would like a Silver Bullet.
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="HOOSIERHint4">Hint 4</a></h4>
+		<div id="HOOSIERHint4" class="toggle-content" style="display: none;">
+		In the first grid, Sparty the SPARTAN likes answers that hide things from his Grecian homeland. In the second grid, Testudo the TERRAPIN likes things that are protected in a very specific way.
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="HOOSIERHint5">Hint 5</a></h4>
+		<div id="HOOSIERHint5" class="toggle-content" style="display: none;">
+		Your final answer is the five-word commonality between the clues "structure," "market," "impose," and "natural" (think about a word that can precede all 4): along with the four-letter commonality between "glass wand," "winter night," "reggae music," and "hand over" (think about what kind of thing is hidden in all 4 phrases).
+		</div>
+	</div>
+	<h3><a href="#" class="toggle-btn" data-target="Mountains">Mountains</a></h3>
+	<div id="Mountains" class="toggle-content" style="display: none;">
+		<h4><a href="#" class="toggle-btn" data-target="MountainsHint1">Hint 1</a></h4>
+		<div id="MountainsHint1" class="toggle-content" style="display: none;">
+		The blocks below each structure will come together to form a phrase clueing a specific kind of rocky formation. It might help to start with the bottom row. For example, in 		the first structure, DDRESS looks like a good start, especially since the row before it would end with a A.
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="MountainsHint2">Hint 2</a></h4>
+		<div id="MountainsHint2" class="toggle-content" style="display: none;">
+		Each phrase is missing three letters - if you know those three letters and have named the rocky formation you're describing, you should be able to fill out the clued 			individual letters below. Each "mini-pyramid" at the bottom of the page clues a single letter.					
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="MountainsHint3">Hint 3</a></h4>
+		<div id="MountainsHint3" class="toggle-content" style="display: none;">
+		Your "corner blocks" in each structure, starting with the top and moving clockwise to the bottom-right and bottom-left, are "GRE," "ASS," "LDD" in the first structure, 		"VOL," "UNG," "IND" in the second, and "SIT," "STS," "EID" in the third.
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="MountainsHint4">Hint 4</a></h4>
+		<div id="MountainsHint4" class="toggle-content" style="display: none;">
+		Your missing letters in each mountain should be "KYO," "ASN," "WEP" and can be assigned based on their position and the icon best suited to their mountain.
+		</div>
+	</div>
+	<h3><a href="#" class="toggle-btn" data-target="NOTJ">The Name on the Jersey</a></h3>
+	<div id="NOTJ" class="toggle-content" style="display: none;">
+		<h4><a href="#" class="toggle-btn" data-target="NOTJHint1">Hint 1</a></h4>
+		<div id="NOTJHint1" class="toggle-content" style="display: none;">
+		If the first answer, MONARCHY, had a player name (ARCH) removed, it would look like MONY. If that player name were replaced by something else, like a single letter, it 		might make a word word that would go well with one of the teams, like the BILLS. 
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="NOTJHint2">Hint 2</a></h4>
+		<div id="NOTJHint2" class="toggle-content" style="display: none;">
+		Your clue answers need to remove player names in the following order: ARCH, ANDRE, TODD, EVE, RICK, ANNIE, JUAN, TED, ALEC, NATE, WILL.
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="NOTJHint3">Hint 3</a></h4>
+		<div id="NOTJHint3" class="toggle-content" style="display: none;">
+		The clue that needs to have WILL removed replaces it with the letter M, and the clue that needs to have ANNIE removed replaces it with the letter A.Hint 3 text
+		</div>
+
+	</div>
+	<h3><a href="#" class="toggle-btn" data-target="REDPRINTS">Red Prints</a></h3>
+	<div id="REDPRINTS" class="toggle-content" style="display: none;">
+		<h4><a href="#" class="toggle-btn" data-target="REDPRINTSHint1">Hint 1</a></h4>
+		<div id="REDPRINTSHint1" class="toggle-content" style="display: none;">
+		Make a 6x6 grid textile plant by connecting the doors as described by the signs pointing to an adjacent room.  All rooms line up uniquely based on signs, rugs, and door 		types/placement.
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="REDPRINTSHint2">Hint 2</a></h4>
+		<div id="REDPRINTSHint2" class="toggle-content" style="display: none;">
+		Zoom out to read a rhyming couplet.  Enumeration is 3 3 1 5, 6 / 6 4 8.
+		</div>
+		<h4><a href="#" class="toggle-btn" data-target="REDPRINTSHint3">Hint 3</a></h4>
+		<div id="REDPRINTSHint3" class="toggle-content" style="display: none;">
+		The new 9-room conflguration of the textile plant depicts a thematic garment and describes its intended wearer with a message in a similar order as the original plant.
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+<!-- The Single Script for All Elements -->
+<script>
+  // 1. Select all links with the class "toggle-btn"
+  const toggleLinks = document.querySelectorAll('.toggle-btn');
+
+  // 2. Loop through each link to attach the event listener
+  toggleLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault(); // Stop page jump
+      
+      // 3. Read the unique target ID from the data-target attribute
+      const targetId = this.getAttribute('data-target');
+      const contentBlock = document.getElementById(targetId);
+      
+      // 4. Toggle the display property
+      if (contentBlock.style.display === 'none' || contentBlock.style.display === '') {
+        contentBlock.style.display = 'block';
+      } else {
+        contentBlock.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
