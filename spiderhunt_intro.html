@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Bugle - Puzzle Event</title>
+    <style>
+        /* --- BRANDING & FONTS --- */
+        @import url('https://googleapis.com');
+
+        body {
+            background-color: #f4f1ea; /* Vintage newsprint color */
+            color: #111111;
+            font-family: 'Courier Prime', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .newspaper-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 4px double #111111;
+            padding: 20px;
+            background-color: #fbf9f4;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- HEADER / BANNER --- */
+        .bugle-header {
+            text-align: center;
+            border-bottom: 5px solid #111111;
+            padding-bottom: 10px;
+        }
+
+        /* Placeholder for your custom Daily Bugle image banner */
+        .bugle-banner-img {
+            width: 100%;
+            max-height: 180px;
+            /*object-fit: contain;*/
+                }
+
+        /* --- METADATA BAR --- */
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            border-bottom: 2px solid #111111;
+            padding: 5px 0;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* --- NEWSPAPER LAYOUT GRID --- */
+        .main-story {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #111111;
+        }
+
+        .main-headline {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 48px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin: 0 0 10px 0;
+            letter-spacing: -1px;
+        }
+
+        .sub-headline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 20px;
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+
+        /* Two-column puzzle layout */
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding-top: 20px;
+        }
+
+        .left-column {
+            border-right: 1px solid #111111;
+            padding-right: 20px;
+        }
+
+        /* --- PUZZLE CONTENT STYLES --- */
+        .puzzle-body {
+            font-size: 16px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .puzzle-body p::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 45px;
+            float: left;
+            line-height: 0.8;
+            padding-top: 4px;
+            padding-right: 8px;
+            font-weight: bold;
+        }
+
+        .puzzle-box {
+            background: #fff;
+            border: 2px solid #111111;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            box-shadow: 3px 3px 0px #111111;
+        }
+
+        /* --- RIGHT COLUMN / SIDEBAR --- */
+        .sidebar-heading {
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            background: #111111;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        .advertisement {
+            border: 1px dashed #555;
+            padding: 15px;
+            text-align: center;
+            font-style: italic;
+            font-size: 13px;
+            background-color: #f1ede4;
+        }
+
+        /* --- INPUT FIELD FOR ANSWERS --- */
+        .answer-section {
+            background: #fff;
+            border: 2px solid #111111;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            box-shadow: 3px 3px 0px #111111;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 10px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 16px;
+            border: 1px solid #111111;
+            box-sizing: border-box;
+            text-transform: uppercase;
+        }
+
+        /* Responsive design for mobile screens */
+        @media (max-width: 768px) {
+            .puzzle-grid { grid-template-columns: 1fr; }
+            .left-column { border-right: none; padding-right: 0; }
+            .main-headline { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="newspaper-container">
+
+    <!-- HEADER: Drop your Daily Bugle image URL in the src below -->
+    <header class="bugle-header">
+        <img class="bugle-banner-img" src="Daily_Bugle_Large.jpg" alt="THE DAILY BUGLE">
+        
+        <div class="news-meta">
+            <div>Dec 12, 2026</div>
+            <div>CONLINE EDITION</div>
+            <div>PAge 1</div>
+        </div>
+    </header>
+
+    <!-- MAIN HEADLINE -->
+    <main class="main-story">
+        <h1 class="main-headline">Jameson offers reward for Spider-Man's True Identity!</h1>
+        <h2 class="sub-headline">Villains line up to collect bounty from prestigious publisher</h2>
+    </main>
+
+    <!-- CONTENT GRID -->
+    <div class="puzzle-grid">
+        
+        <!-- LEFT COLUMN: The Puzzle and Story -->
+        <article class="left-column">
+            <div class="puzzle-body">
+                <p>That's right, New York City! Now that the Daily Bugle has finally moved online, it's time to take this nefarious Spider-Man business seriously. We are crowdsourcing the unveiling of this dangerous threat to our streets. I, J Jonah Jameson, your illustrious pubisher and editor-in-chief am offering a reward for anyone who can provide definitive proof of the masked menace's real identity.</p>
+                
+                <!-- PUZZLE BOX: Edit your riddle or puzzle clue here -->
+                <div class="puzzle-box">
+                   <h3 style="text-align:center">Conline Mini-Extravaganza 2026</h3>
+                	<p>Welcome to the Conline Mini-Extravaganza! As you can see, the Daily Bugle has finally embraced new media, and its annoyance-in-chief, J Jonah Jameson is going 			after Spider-Man again! Five of Spider-Man's villains have quickly taken up the challenge. Let's use our puzzling skills to see what these five up to and discover 			Spider-Man's fate. You will find five individual villain puzzles linked below. When you have solved all five, you will be presented with a final puzzle. </p>
+			<p>On every page, you will find your puzzle text in a white box like this one, with a submission box in white below the puzzle. Everything else on the page may be treated as flavor.
+                </div>
+
+
+            </div>
+
+            <!-- ANSWER SUBMISSION BOX
+            <div class="answer-section">
+                <label for="puzzle-answer" style="font-weight: bold; display: block; margin-bottom: 5px;">ENTER DECODED ANSWER:</label>
+                <input type="text" id="puzzle-answer" class="answer-input" placeholder="Type answer here...">
+            </div>
+-->
+        </article>
+
+        <!-- RIGHT COLUMN: Side Info & Flavor Text -->
+        <aside class="right-column">
+            <h3 class="sidebar-heading" text-align: center;>Expose! </h3>
+            <img src="jameson.jpg" style="width: 100%; height: auto; border: 1px solid #111111;">
+		<p style="font-size: 14px; margin-bottom: 20px; text-align: center;">
+                <strong>J Jonah Jameson</strong><br>
+                </p>
+
+            <h3 class="sidebar-heading">Read more!</h3>
+            <ul style="font-size: 14px; padding-left: 20px;">
+                <li><a href="spiderhunt_intro.html"> Page 1: Intro (Active)</a></li>
+		<li><a href="spiderhunt_shriek.html"> Page 2: Shriek (Active)</a></li>
+                <li>Page 3: Kraven, The Hunter(Active)</li>
+                <li>Page 4: Boomerang (Active)</li>
+                <li>Page 5: Tombstone (Active)</li>
+                <li>Page 6: Silvermane (Active)</li>
+		<li>Page 7: Hunting for Spiders (Locked)</li>
+            </ul>
+
+            <!-- 
+
+            <div class="advertisement">
+             <strong>OSCORP INDUSTRIES</strong><br>
+                Building a safer tomorrow, today.<br>
+                <span style="font-size: 11px;">(Not responsible for any accidental radioactive mutations)</span>
+				
+            </div>-->
+        </aside>
+
+    </div>
+
+</div>
+
+</body>
+</html>
