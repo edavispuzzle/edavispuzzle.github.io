@@ -164,6 +164,15 @@
             .left-column { border-right: none; padding-right: 0; }
             .main-headline { font-size: 32px; }
         }
+        /* --- RIGHT-JUSTIFIED SIDEBAR STATUSES --- */
+        .right-column ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 8px; /* Adds clean spacing between lines */
+        }
+
     </style>
 </head>
 <body>
@@ -177,7 +186,7 @@
         <div class="news-meta">
             <div>Dec 12, 2026</div>
             <div>CONLINE EDITION</div>
-            <div>PAge 1</div>
+            <div>Page 1</div>
         </div>
     </header>
 
@@ -222,14 +231,14 @@
                 </p>
 
             <h3 class="sidebar-heading">Read more!</h3>
-            <ul style="font-size: 14px; padding-left: 20px;">
-                <li><a href="spiderhunt_intro.html"> Page 1: Intro (Active)</a></li>
-		<li><a href="spiderhunt_shriek.html"> Page 2: Shriek (Active)</a></li>
-                <li>Page 3: Kraven, The Hunter(Active)</li>
-                <li>Page 4: Boomerang (Active)</li>
-                <li>Page 5: Tombstone (Active)</li>
-                <li>Page 6: Silvermane (Active)</li>
-		<li>Page 7: Hunting for Spiders (Locked)</li>
+             <ul style="font-size: 14px; padding-left: 20px;">
+                <li id="nav-intro">Page 1: Intro </li>
+		<li id="nav-p2">Page 2: Shriek</li>
+                <li id="nav-p3">Page 3: Kraven</li>
+                <li id="nav-p4">Page 4: Mr. Negative</li>
+                <li id="nav-p5">Page 5: Tombstone</li>
+                <li id="nav-p6">Page 6: Chameleon</li>
+		<li id="nav-p7">Page 7: Hunting for Spiders</li>
             </ul>
 
             <!-- 
@@ -245,6 +254,195 @@
     </div>
 
 </div>
+
+
+
+<script>
+	const TOTAL_PAGES = 7;
+	const PUZZLE_COUNT = 7;
+	const CURRENT_PUZZLE_NUM = 1; // Change this to 2 on page 2, 3 on page 3, etc.
+     
+	// CORRECT_ANSWER_HASH is the hash for THIS page's puzzle answer: 
+	const CORRECT_ANSWER_HASH = "29534c66c4b0ce18f140973f06d8c746eb687fac1d80a4bc5e862faf7bbdcc0f";
+
+
+	// Automatically initialize the 6 puzzle variables if they don't exist yet
+
+	localStorage.clear(); // Wipes all stored answers so you can test from scratch
+
+	for (let i = 2; i <= PUZZLE_COUNT; i++) {
+    if (localStorage.getItem(`puzzle_${i}_solved`) === null) {
+        localStorage.setItem(`puzzle_${i}_solved`, "false");
+	    }
+	}
+
+	
+    // Helper function to turn plain text into a secure SHA-256 scrambled string
+    async function sha256(message) {
+        const msgBuffer = new TextEncoder().encode(message);                    
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+ // --- 1. INITIALIZE GLOBAL HUNT STORAGE ---
+    for (let i = 2; i <= PUZZLE_COUNT; i++) {
+        if (localStorage.getItem(`puzzle_${i}_solved`) === null) {
+            localStorage.setItem(`puzzle_${i}_solved`, "false");
+        	}
+    	}
+
+// --- 2. DYNAMIC SIDEBAR TEXT GENERATION FUNCTION ---
+       function updateSidebarProgress() {
+        // 1. Explicitly map each puzzle number to its target file name
+        const puzzleFiles = {
+            1: "spiderhunt_intro.html",
+	    2: "spiderhunt_shriek.html",
+            3: "spiderhunt_kraven.html",
+            4: "spiderhunt_mrnegative.html",
+            5: "spiderhunt_tombstone.html",
+            6: "spiderhunt_chameleon.html",
+            7: "spiderhunt_huntingforspiders.html"
+        };
+
+        // Explicitly map each puzzle number directly to its clean display name
+        const puzzleNames = {
+            2: "Page 2: Shriek",
+            3: "Page 3: Kraven",
+            4: "Page 4: Mr. Negative",
+            5: "Page 5: Tombstone",
+            6: "Page 6: Chameleon",
+            7: "Page 7: Hunting for Spiders"
+        };
+
+// Helper function to build a styled hyperlink block
+        function makeLink(num, content) {
+            return `<a href="${puzzleFiles[num]}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #111;">${content}</a>`;
+        }
+
+
+        // Handle Intro Page Layout Separately
+        const introItem = document.getElementById('nav-intro');
+                if (introItem) {
+            if (CURRENT_PUZZLE_NUM === 1) {
+                // If on the intro page, show active status but keep the link active
+                const introLink = makeLink(1, "Page 1: Intro");
+                introItem.innerHTML = `<span>${introLink}</span> <strong><span style="color: #0056b3;">[⚡ ACTIVE]</span></strong>`;
+            } else {
+                // If on any other page, keep the link active and mark it as read
+                const introLink = makeLink(1, "Page 1: Intro");
+                introItem.innerHTML = `<span>${introLink}</span> <span style="color: #6c757d;">[📖 READ]</span>`;
+            }
+        }
+
+	// Check if all puzzles from 2 to 6 are entirely solved
+        let middlePuzzlesSolved = true;
+        for (let m = 2; m <= 6; m++) {
+            if (localStorage.getItem(`puzzle_${m}_solved`) !== "true") {
+                middlePuzzlesSolved = false;
+                break;
+            }
+        }
+        
+	//Update for each of puzzles 2-6	
+	for (let i =2 ; i <= PUZZLE_COUNT; i++) {
+            const listItem = document.getElementById(`nav-p${i}`);
+            if (!listItem) continue; // Skip if the list item isn't on this page
+
+            const isSolved = localStorage.getItem(`puzzle_${i}_solved`) === "true";
+            
+            // Logic to determine status text
+            if (isSolved) {
+                const linkText = makeLink(i, `${puzzleNames[i]}`);
+                listItem.innerHTML = `<span>${linkText}</span> <strong><span style="color: #155724;">[✅ SOLVED]</span></strong>`;
+            } else if (i === CURRENT_PUZZLE_NUM) {
+                listItem.innerHTML = `<span>${puzzleNames[i]}</span> <strong><span style="color: #0056b3;">[⚡ ACTIVE]</span></strong>`;
+            } else if (i === 7) {
+                // Puzzle 7 lock logic
+                if (middlePuzzlesSolved) {
+                    const linkText = makeLink(i, `${puzzleNames[i]}`);
+                    listItem.innerHTML = `<span>${linkText}</span> <span style="color: #6c757d;">[🔓 UNLOCKED]</span>`;
+                } else {
+                    // No link function used here—remains text only while locked
+                    listItem.innerHTML = `<span>Hidden</span> <span style="color: #b22222; font-style: italic;">[🔒 LOCKED]</span>`;
+                }
+            } else {
+                // Puzzles 2-6 default to unlocked state from the start
+                const linkText = makeLink(i, `${puzzleNames[i]}`);
+                listItem.innerHTML = `<span>${linkText}</span> <span style="color: #6c757d;">[🔓 UNLOCKED]</span>`;
+            }
+        }
+
+console.log("Current Hunt Memory State:", {
+    p2: localStorage.getItem("puzzle_2_solved"),
+    p3: localStorage.getItem("puzzle_3_solved"),
+    p4: localStorage.getItem("puzzle_4_solved"),
+    p5: localStorage.getItem("puzzle_5_solved"),
+    p6: localStorage.getItem("puzzle_6_solved")
+});
+
+
+    }
+
+    // 3. Set up the Answer Checker listener
+	const answerInputField = document.getElementById('puzzle-answer');
+    
+    // Only run this code block if the puzzle-answer element actually exists on the page
+    if (answerInputField) {
+    document.getElementById('puzzle-answer').addEventListener('keypress', async function(e) {
+        // Trigger verification when the player hits the "Enter" key
+        if (e.key === 'Enter') {
+            const inputField = e.target;
+            
+            // Clean up input: remove accidental spaces, convert to lowercase
+            const cleanUserAnswer = inputField.value.toLowerCase().replace(/[^a-z]/g, '');
+            
+            if (!cleanUserAnswer) return; // Do nothing if field is empty
+
+            // Encrypt the user's guess
+            const hashedUserGuess = await sha256(cleanUserAnswer);
+
+            // Create or grab a vintage-styled feedback alert element
+            let feedback = document.getElementById('bugle-feedback');
+            if (!feedback) {
+                feedback = document.createElement('div');
+                feedback.id = 'bugle-feedback';
+                feedback.style.marginTop = '15px';
+                feedback.style.padding = '10px';
+                feedback.style.fontFamily = "'Courier Prime', monospace";
+                feedback.style.fontWeight = 'bold';
+                feedback.style.textAlign = 'center';
+                feedback.style.border = '1px solid #111';
+                inputField.parentNode.appendChild(feedback);
+            }
+
+            // 3. Check the hashes against each other
+            if (hashedUserGuess === CORRECT_ANSWER_HASH) {
+                localStorage.setItem(`puzzle_${CURRENT_PUZZLE_NUM}_solved`, "true");
+		updateSidebarProgress();
+		// Correct styling: 
+                feedback.style.backgroundColor = '#d4edda';
+                feedback.style.color = '#155724';
+                feedback.innerHTML = "📣 Great job! Unfortunately, Shriek sang just outside the range of human hearing...and no one responded.";
+                
+            } else {
+                // Incorrect 
+                feedback.style.backgroundColor = '#f8d7da';
+                feedback.style.color = '#721c24';
+                feedback.innerHTML = "Incorrect. Try again.";
+                updateSidebarProgress();
+
+                // Shake the answer box for a fun mechanical feel
+                inputField.style.borderColor = '#721c24';
+                setTimeout(() => { inputField.style.borderColor = '#111'; }, 1000);
+            }
+        }
+    })};
+document.addEventListener("DOMContentLoaded", updateSidebarProgress);
+
+</script>
+
+
 
 </body>
 </html>
