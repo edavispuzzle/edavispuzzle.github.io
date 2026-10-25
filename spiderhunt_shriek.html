@@ -98,7 +98,7 @@
             text-align: justify;
         }
 
-        .puzzle-body p::first-letter {
+ 	.puzzle-body > p::first-letter {
             font-family: 'Playfair Display', serif;
             font-size: 45px;
             float: left;
@@ -191,30 +191,79 @@
     <div class="puzzle-grid">
         
         <!-- LEFT COLUMN: The Puzzle and Story -->
-        <article class="left-column">
+        
+<article class="left-column">
             <div class="puzzle-body">
-                <p>Shriek, the villainess with the golden voice, has announced her intention to find Spider-Man's identity and claim the reward. Insert additional flavor here.</p>
-                
-                <!-- PUZZLE BOX: Edit your riddle or puzzle clue here -->
-                <div class="puzzle-box">
-                   <h3 style="text-align:center">Scales of Injustice</h3>
-                	<p>Shriek intends to craft a song so popular, that all of New York will get behind her efforts and help her identify Spider-Man. She has taken parts of popular songs below and offered up her own arrangement, each with just enough of a change to duck the pesky copyright lawyers.</p>
-                </div>
+               <p>Shriek, the villainess with the golden voice, has announced her intention to find Spider-Man's identity and claim the reward. Insert additional flavor here.</p>
+               
 
+                <!-- UNIFIED PUZZLE BOX CONTAINER -->
+                <div class="puzzle-box" style="font-family: 'Courier Prime', monospace;">
+                    
+                    <!-- [SECTION 1] SINGLE COLUMN TEXT -->
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="text-align:center">Scales of Injustice</h3>
+                	
 
-            </div>
+                        <!-- Standard paragraph text without drop-caps -->
+                        <p>Shriek intends to craft a song so popular, that all of New York will get behind her efforts and help her identify Spider-Man. She has taken parts of popular songs below and offered up her own arrangement, each 			with just enough of a change to duck the pesky copyright lawyers.</p>
 
-            <!-- ANSWER SUBMISSION BOX-->
-            <div class="answer-section">
+                    </div>
+
+                    <!-- [SECTION 2] MULTI-COLUMN CONTENT INSIDE THE BOX -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; border-top: 1px dashed #111; border-bottom: 1px dashed #111; padding: 15px 0; margin-bottom: 20px;">
+                        
+                        <!-- Inner Column 1 -->
+                        <div>
+                            <p style="font-size: 14px; margin: 5px 0 0 0;">Golden sun, there's no heaven...</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">Here we are now...</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">On a dark desert highway...</p>
+			        <p style="font-size: 14px; margin: 5px 0 0 0;">She's just a name...</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">The bright blessed day...</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">Your female deer's been aching...</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">Placeholder 1</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">Placeholder 2</p>
+
+                        </div>
+
+                        <!-- Inner Column 2 -->
+                        <div>
+                            <p style="font-size: 14px; margin: 5px 0 0 0;">...brings us back to us</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">...but you're too shy to say it</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">...cool wind in my long, long way</p>
+			        <p style="font-size: 14px; margin: 5px 0 0 0;">...it's easy if you try</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">...the dark sacred needle</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">...who claims that I am the one</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">Placeholder 1</p>
+           			<p style="font-size: 14px; margin: 5px 0 0 0;">Placeholder 2</p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- [SECTION 3] ANOTHER SINGLE COLUMN TEXT -->
+                    <div>
+                    </div>
+
+                </div> <!-- END OF UNIFIED PUZZLE BOX -->
+
+             </div>
+
+            <!-- ANSWER SUBMISSION BOX -->
+             <div class="answer-section">
                 <label for="puzzle-answer" style="font-weight: bold; display: block; margin-bottom: 5px;">Shriek your answer below:</label>
                 <input type="text" id="puzzle-answer" class="answer-input" placeholder="Type answer here...">
             </div>
-
         </article>
+
+
+
+
+
 
         <!-- RIGHT COLUMN: Side Info & Flavor Text -->
         <aside class="right-column">
-            <h3 class="sidebar-heading" text-align: center;>Expose! </h3>
+            <h3 class="sidebar-heading" text-align: center;>Expos&eacute;! </h3>
             <img src="shriek.jpg" style="width: 100%; height: auto; border: 1px solid #111111;">
 		<p style="font-size: 22px; margin-bottom: 20px; text-align: center;">
                 <strong>Shriek</strong><br>
@@ -244,6 +293,70 @@
     </div>
 
 </div>
+
+
+
+<script>
+    // 1. Paste your secure SHA-256 answer hashes here (Lowercase, no spaces)
+    // The example hash below corresponds to the word "echo"
+    const CORRECT_ANSWER_HASH = "29534c66c4b0ce18f140973f06d8c746eb687fac1d80a4bc5e862faf7bbdcc0f";
+
+    // Helper function to turn plain text into a secure SHA-256 scrambled string
+    async function sha256(message) {
+        const msgBuffer = new TextEncoder().encode(message);                    
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // 2. Set up the Answer Checker listener
+    document.getElementById('puzzle-answer').addEventListener('keypress', async function(e) {
+        // Trigger verification when the player hits the "Enter" key
+        if (e.key === 'Enter') {
+            const inputField = e.target;
+            
+            // Clean up input: remove accidental spaces, convert to lowercase
+            const cleanUserAnswer = inputField.value.toLowerCase().replace(/[^a-z]/g, '');
+            
+            if (!cleanUserAnswer) return; // Do nothing if field is empty
+
+            // Encrypt the user's guess
+            const hashedUserGuess = await sha256(cleanUserAnswer);
+
+            // Create or grab a vintage-styled feedback alert element
+            let feedback = document.getElementById('bugle-feedback');
+            if (!feedback) {
+                feedback = document.createElement('div');
+                feedback.id = 'bugle-feedback';
+                feedback.style.marginTop = '15px';
+                feedback.style.padding = '10px';
+                feedback.style.fontFamily = "'Courier Prime', monospace";
+                feedback.style.fontWeight = 'bold';
+                feedback.style.textAlign = 'center';
+                feedback.style.border = '1px solid #111';
+                inputField.parentNode.appendChild(feedback);
+            }
+
+            // 3. Check the hashes against each other
+            if (hashedUserGuess === CORRECT_ANSWER_HASH) {
+                // Correct styling: 
+                feedback.style.backgroundColor = '#d4edda';
+                feedback.style.color = '#155724';
+                feedback.innerHTML = "📣 Great job! Unfortunately, Shriek sang just outside the range of human hearing...and no one responded.";
+                
+            } else {
+                // Incorrect 
+                feedback.style.backgroundColor = '#f8d7da';
+                feedback.style.color = '#721c24';
+                feedback.innerHTML = "Incorrect. Try again.";
+                
+                // Shake the answer box for a fun mechanical feel
+                inputField.style.borderColor = '#721c24';
+                setTimeout(() => { inputField.style.borderColor = '#111'; }, 1000);
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
