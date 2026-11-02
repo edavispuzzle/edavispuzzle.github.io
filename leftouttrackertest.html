@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Puzzle Hunt Status Dashboard</title>
+    <style>
+        body { font-family: sans-serif; background: #fff; color: #000; padding: 24px; margin: 0; min-height: 100vh; }
+        header { margin-bottom: 25px; border-bottom: 2px solid #000; padding-bottom: 10px; display: flex; justify-content: space-between; }
+        h1 { margin: 0; font-size: 24px; text-transform: uppercase; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .round-tile { border: 2px solid #000; padding: 15px; display: flex; flex-direction: column; min-height: 200px; }
+        .round-header { border-bottom: 1px solid #000; padding-bottom: 8px; margin-bottom: 12px; display: flex; justify-content: space-between; font-weight: bold; }
+        .puzzle-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+        .puzzle-item { display: flex; justify-content: space-between; align-items: center; line-height: 1.3; }
+        .puzzle-item.open { font-weight: bold; cursor: pointer; }
+        .puzzle-item.open:hover { background: #f5f5f5; }
+        .puzzle-item.solved { color: #666; text-decoration: line-through; }
+        .puzzle-item.locked { color: #ccc; }
+        .answer-text { font-family: monospace; font-weight: bold; color: #000; text-decoration: none !important; text-transform: uppercase; }
+        .meta-item { margin-top: auto; padding-top: 8px; border-top: 1px dashed #000; font-weight: bold; text-transform: uppercase; }
+        #balloons { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 99; overflow: hidden; }
+        .balloon { position: absolute; bottom: -100px; width: 50px; height: 65px; border-radius: 50%/40% 40% 60% 60%; animation: float 4s ease-in forwards; }
+        @keyframes float { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-120vh); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🧩 Left Out Hunt Status</h1>
+        <div>Click any <b>Open (·)</b> puzzle to log a solve!</div>
+    </header>
+
+    <div id="balloons"></div>
+    <div class="grid-container" id="grid"></div>
+
+    <script>
+        // Minimized layout data model (easily expandable)
+                const huntData = [
+            {
+                title: "Round 1: The Pen",
+                stats: "4/5 Solved",
+                puzzles: [
+                    { name: "Fountain of Youth", status: "solved", answer: "EVERLASTING" },
+                    { name: "Ballpoint Ballad", status: "solved", answer: "INKWELL" },
+                    { name: "Quill Yourself", status: "solved", answer: "POETRY" },
+                    { name: "The Ink Blot Test", status: "open", answer: "" },
+                    { name: "Felt-Tip Phenomenon", status: "solved", answer: "MARKER" }
+                ],
+                meta: { name: "META: Mighty Sword", status: "open", answer: "" }
+            },
+            {
+                title: "Round 2: The Grid",
+                stats: "2/5 Solved",
+                puzzles: [
+                    { name: "Crosswires", status: "solved", answer: "SHORTCIRCUIT" },
+                    { name: "Battleship Row", status: "solved", answer: "SUNK" },
+                    { name: "Coordinate Chaos", status: "open", answer: "" },
+                    { name: "Power Lines", status: "open", answer: "" },
+                    { name: "Matrix Reloaded", status: "locked", answer: "" }
+                ],
+                meta: { name: "META: Out of the Box", status: "locked", answer: "" }
+            },
+            {
+                title: "Round 3: Sound Wave",
+                stats: "1/4 Solved",
+                puzzles: [
+                    { name: "Frequency Modulator", status: "solved", answer: "HERTZ" },
+                    { name: "White Noise", status: "open", answer: "" },
+                    { name: "Echo Location", status: "open", answer: "" },
+                    { name: "Resonance Chamber", status: "locked", answer: "" }
+                ],
+                meta: { name: "META: Grand Finale", status: "locked", answer: "" }
+            },
+            {
+                title: "Round 4: Deep Storage",
+                stats: "1/3 Solved",
+                puzzles: [
+                    { name: "Archive Retrieval", status: "solved", answer: "DOSSIER" },
+                    { name: "Cold Case", status: "open", answer: "" },
+                    { name: "Dusty Basements", status: "locked", answer: "" }
+                ],
+                meta: { name: "META: Key Chain", status: "locked", answer: "" }
+            },
+            {
+                title: "Round 5: Outer Space",
+                stats: "2/4 Solved",
+                puzzles: [
+                    { name: "Asteroid Belt", status: "solved", answer: "ORBIT" },
+                    { name: "Cosmic Ray", status: "solved", answer: "GAMMA" },
+                    { name: "Event Horizon", status: "open", answer: "" },
+                    { name: "Nebula Net", status: "locked", answer: "" }
+                ],
+                meta: { name: "META: Wormhole", status: "locked", answer: "" }
+            },
+            {
+                title: "Round 6: The Kitchen",
+                stats: "1/3 Solved",
+                puzzles: [
+                    { name: "Rolling Pin", status: "solved", answer: "FLOUR" },
+                    { name: "Chef's Knife", status: "open", answer: "" },
+                    { name: "Boiling Point", status: "locked", answer: "" }
+                ],
+                meta: { name: "META: Soufflé Extract", status: "locked", answer: "" }
+            },
+            {
+                title: "Round 7: Microscopic",
+                stats: "0/3 Solved",
+                puzzles: [
+                    { name: "Double Helix", status: "open", answer: "" },
+                    { name: "Petri Dish", status: "open", answer: "" },
+                    { name: "Electron Beam", status: "locked", answer: "" }
+                ],
+                meta: { name: "META: Organism", status: "locked", answer: "" }
+            },
+            {
+                title: "Round 8: Lost City",
+                stats: "0/3 Solved",
+                puzzles: [
+                    { name: "Sunken Temple", status: "open", answer: "" },
+                    { name: "Coral Crypt", status: "locked", answer: "" },
+                    { name: "Deep Trench", status: "locked", answer: "" }
+                ],
+                meta: { name: "META: Atlantis", status: "locked", answer: "" }
+            },
+            {
+                title: "Round 9: The Library",
+                stats: "0/3 Solved",
+                puzzles: [
+                    { name: "Card Catalog", status: "open", answer: "" },
+                    { name: "Lost Folio", status: "locked", answer: "" },
+                    { name: "Quiet Room", status: "locked", answer: "" }
+                ],
+                meta: { name: "META: Index", status: "locked", answer: "" }
+            },
+            {
+                title: "Round 10: Neon City",
+                stats: "0/3 Solved",
+                puzzles: [
+                    { name: "Cyber Highway", status: "open", answer: "" },
+                    { name: "Grid Runner", status: "locked", answer: "" },
+                    { name: "Data Leak", status: "locked", answer: "" }
+                ],
+                meta: { name: "META: Mainframe", status: "locked", answer: "" }
+            },
+            { isEmptySlot: true, label: "Round 11 Slot" },
+            { isEmptySlot: true, label: "Round 12 Slot" }
+        ];
+
+
+        function triggerBalloons() {
+            const container = document.getElementById('balloons');
+            const colors = ['#ff4d4d', '#3399ff', '#33cc33', '#ffcc00', '#ff66cc'];
+            for (let i = 0; i < 25; i++) {
+                const b = document.createElement('div');
+                b.className = 'balloon';
+                b.style.background = colors[Math.floor(Math.random() * colors.length)];
+                b.style.left = Math.random() * 100 + 'vw';
+                b.style.animationDelay = (Math.random() * 1.5) + 's';
+                b.style.transform = `scale(${0.6 + Math.random() * 0.6})`;
+                container.appendChild(b);
+                b.addEventListener('animationend', () => b.remove());
+            }
+        }
+
+        function solvePuzzle(rIdx, pIdx, isMeta) {
+            const r = huntData[rIdx];
+            const p = isMeta ? r.meta : r.puzzles[pIdx];
+            const ans = prompt(`Enter solution code for "${p.name}":`);
+            if (!ans || !ans.trim()) return;
+
+            p.status = "solved";
+            p.answer = ans.trim().toUpperCase();
+
+            if (!isMeta) {
+                r.stats = `${r.puzzles.filter(x => x.status === "solved").length}/${r.puzzles.length} Solved`;
+            }
+            render();
+            triggerBalloons();
+        }
+
+        function render() {
+            const container = document.getElementById('grid');
+            container.innerHTML = "";
+
+            huntData.forEach((r, rIdx) => {
+                const tile = document.createElement('div');
+                tile.className = 'round-tile';
+
+                let pHTML = "";
+                r.puzzles.forEach((p, pIdx) => {
+                    const sym = p.status === "solved" ? "✓" : (p.status === "locked" ? "🔒" : "·");
+                    const clk = p.status === 'open' ? `onclick="solvePuzzle(${rIdx}, ${pIdx}, false)"` : '';
+                    pHTML += `<li class="puzzle-item ${p.status}" ${clk}><div>${sym} ${p.name}</div>${p.answer ? `<span class="answer-text">${p.answer}</span>` : ''}</li>`;
+                });
+
+                const mSym = r.meta.status === "solved" ? "✓" : (r.meta.status === "locked" ? "🔒" : "·");
+                const mClk = r.meta.status === 'open' ? `onclick="solvePuzzle(${rIdx}, null, true)"` : '';
+
+                tile.innerHTML = `
+                    <div class="round-header"><span>${r.title}</span><span>${r.stats}</span></div>
+                    <ul class="puzzle-list">
+                        ${pHTML}
+                        <li class="puzzle-item meta-item ${r.meta.status}" ${mClk}><div>${mSym} ${r.meta.name}</div>${r.meta.answer ? `<span class="answer-text">${r.meta.answer}</span>` : ''}</li>
+                    </ul>`;
+                container.appendChild(tile);
+            });
+        }
+
+        render();
+    </script>
+</body>
+</html>
