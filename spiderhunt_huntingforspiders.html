@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Bugle - Page 7: Hunting for Spiders</title>
+    <link rel="stylesheet" href="style.css">
+   </head>
+<body>
+
+    <div class="newspaper-container">
+        
+        <!-- HEADER: Drop your Daily Bugle image URL in the src below -->
+    <header class="bugle-header">
+        <img class="bugle-banner-img" src="Daily_Bugle_Large.jpg" alt="THE DAILY BUGLE">
+        
+        <div class="news-meta">
+            <div>Dec 12, 2026</div>
+            <div>CONLINE EDITION</div>
+            <div>Page 7</div>
+        </div>
+    </header>
+
+    <!-- MAIN HEADLINE -->
+    <main class="main-story">
+        <h1 class="main-headline">VILLAINS FLUMOXED, RESORTING TO NEW MEDIA</h1>
+        <h2 class="sub-headline">Having failed to identify the vile Spider-Man, our insipid investigators are going online to find him!</h2>
+    </main>
+
+
+        <section class="previous-puzzles-section" aria-label="Previous Puzzles">
+            <h3 class="sidebar-heading">Previous Puzzles</h3>
+            
+            <div class="villain-grid">
+                <!-- 1. Shriek -->
+                <div class="villain-card">
+                    <div class="villain-name">Shriek</div>
+                    <img src="shriek.jpg" alt="Shriek" class="villain-square-img">
+                    <div class="villain-answer">HIGH NOTE</div>
+                </div>
+
+                <!-- 2. Kraven -->
+                <div class="villain-card">
+                    <div class="villain-name">Kraven</div>
+                    <img src="kraven.jpg" alt="Kraven" class="villain-square-img">
+                    <div class="villain-answer">BIG GAME</div>
+                </div>
+
+                <!-- 3. Mr. Negative -->
+                <div class="villain-card">
+                    <div class="villain-name">Mr. Negative</div>
+                    <img src="mrnegative.jpg" alt="Mr. Negative" class="villain-square-img">
+                    <div class="villain-answer">FRINGE</div>
+                </div>
+
+                <!-- 4. Doc Ock -->
+                <div class="villain-card">
+                    <div class="villain-name">Doc Ock</div>
+                    <img src="docock.jpg" alt="Doc Ock" class="villain-square-img">
+                    <div class="villain-answer">METALLIC</div>
+                </div>
+
+                <!-- 5. Chameleon -->
+                <div class="villain-card">
+                    <div class="villain-name">Chameleon</div>
+                    <img src="chameleon.jpg" alt="Chameleon" class="villain-square-img">
+                    <div class="villain-answer">RED PANDA</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Large Pale Puzzle Box for Digital Puzzle -->
+ <main class="puzzle-box puzzle-box-large" id="digital-puzzle-container" style="padding: 0; overflow: hidden;">
+    <iframe 
+        id="raddle-frame"
+        src="huntingtest.html" 
+        title="Villain Word Ladders" 
+        scrolling="no"
+        style="width: 100%; height: 950px; border: none; display: block;">
+    </iframe>
+</main>
+
+<script>
+    (function() {
+        const frame = document.getElementById("raddle-frame");
+        if (!frame) return;
+
+        function syncFrameHeight() {
+            try {
+                const doc = frame.contentDocument || frame.contentWindow.document;
+                if (doc && doc.body) {
+                    frame.style.height = doc.documentElement.scrollHeight + "px";
+                }
+            } catch (e) {
+                // Fallback if tested locally via file:// instead of a local server or GitHub Pages
+            }
+        }
+
+        frame.addEventListener("load", function() {
+            syncFrameHeight();
+            try {
+                const doc = frame.contentDocument || frame.contentWindow.document;
+                const observer = new ResizeObserver(syncFrameHeight);
+                observer.observe(doc.body);
+            } catch (e) {}
+        });
+    })();
+</script>
+
+
+
+</body>
+</html>
