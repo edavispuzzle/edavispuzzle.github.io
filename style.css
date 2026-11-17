@@ -228,3 +228,49 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* --- RADDLE TABBED PUZZLE STYLES --- */
+body.raddle-embed { background-color: #ffffff; padding: 15px; margin: 0; }
+.raddle-instructions { text-align: center; border-bottom: 2px solid #111; padding-bottom: 12px; margin-bottom: 18px; font-size: 14px; }
+
+.villain-tabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 20px; }
+@media (max-width: 700px) { .villain-tabs { grid-template-columns: repeat(2, 1fr); } }
+
+.villain-tab-btn { background: #fbf9f4; border: 2px solid #111; padding: 8px; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; box-shadow: 2px 2px 0 #111; font-family: inherit; }
+.villain-tab-btn:hover { background: #f1ede4; }
+.villain-tab-btn.active-tab { background: #fff3cd; border: 3px solid #111; box-shadow: 4px 4px 0 #111; }
+.villain-tab-btn.solved-tab { background: #e6f4ea; }
+.villain-tab-btn.active-tab.solved-tab { background: #d4edda; }
+
+.tab-villain-name { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; color: #111; }
+.tab-villain-img { width: 100%; max-width: 110px; aspect-ratio: 1 / 1; object-fit: cover; border: 1px solid #111; background: #e2ddd2; display: block; margin-bottom: 6px; }
+.tab-status-badge { font-family: 'Oswald', sans-serif; font-size: 12px; text-transform: uppercase; padding: 2px 8px; background: #111; color: #fff; width: 100%; box-sizing: border-box; }
+.villain-tab-btn.solved-tab .tab-status-badge { background: #155724; }
+
+.active-workspace { border: 2px solid #111; background: #fbf9f4; box-shadow: 3px 3px 0 #111; }
+.workspace-header { background: #111; color: #fff; font-family: 'Oswald', sans-serif; font-size: 19px; text-transform: uppercase; padding: 8px 15px; display: flex; justify-content: space-between; align-items: center; }
+.workspace-body { display: grid; grid-template-columns: 280px 1fr; gap: 20px; padding: 20px; align-items: start; }
+@media (max-width: 768px) { .workspace-body { grid-template-columns: 1fr; } }
+
+.ladder-panel { background: #fff; border: 2px solid #111; padding: 12px; }
+.panel-label { font-family: 'Oswald', sans-serif; font-size: 13px; text-transform: uppercase; color: #444; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+.ladder-stack { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.ladder-word { border: 1px solid #111; padding: 7px 10px; text-align: center; font-weight: bold; font-size: 16px; letter-spacing: 1px; background: #f4f1ea; }
+.ladder-word.start-word { background: #111; color: #fff; }
+.ladder-word.latest-word { background: #fff3cd; border: 2px solid #111; }
+.ladder-word.final-word { background: #d4edda; border: 2px solid #155724; color: #155724; }
+
+.entry-form { display: flex; gap: 6px; }
+.entry-input { width: 100%; padding: 9px; font-family: 'Courier Prime', monospace; font-size: 15px; font-weight: bold; text-transform: uppercase; border: 2px solid #111; box-sizing: border-box; }
+.entry-btn { background: #111; color: #fff; border: none; padding: 0 14px; font-family: 'Oswald', sans-serif; text-transform: uppercase; cursor: pointer; font-size: 15px; }
+.entry-btn:hover { background: #333; }
+.feedback-msg { font-size: 12px; min-height: 16px; margin-top: 6px; text-align: center; font-weight: bold; }
+.feedback-error { color: #a90000; }
+.feedback-success { color: #155724; }
+.solved-banner { padding: 15px 10px; text-align: center; background: #d4edda; border: 1px solid #155724; color: #155724; font-weight: bold; font-size: 15px; }
+
+.clues-panel { display: flex; flex-direction: column; gap: 8px; }
+.clue-item { background: #fff; border: 1px solid #888; padding: 10px 12px; font-size: 14px; line-height: 1.4; cursor: pointer; text-align: left; font-family: 'Courier Prime', monospace; }
+.clue-item:hover { border-color: #111; background: #f7f4eb; }
+.clue-item.selected-clue { border: 2px solid #111; background: #fff3cd; font-weight: bold; }
+.first-token { background: #111; color: #fff; padding: 1px 5px; font-size: 12.5px; border-radius: 2px; }

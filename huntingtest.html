@@ -3,204 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Bugle - Raddle Chains Test</title>
-    <link href="https://googleapis.com" rel="stylesheet">
-    <style>
-body {
-    background-color: #ffffff;
-    color: #111111;
-    font-family: 'Courier Prime', monospace;
-    margin: 0;
-    padding: 15px;
-}
-.raddle-wrapper {
-    max-width: 100%;
-    margin: 0 auto;
-    background: #ffffff;
-}
-        .raddle-instructions {
-            text-align: center;
-            border-bottom: 2px solid #111111;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-         .chains-grid {
-            display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            gap: 10px;
-            align-items: start;
-        }
-        @media (max-width: 768px) {
-            .chains-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 1024px) {
-            .chains-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 1024px) {
-            .chains-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .chains-grid { grid-template-columns: 1fr; }
-        }
-        .chain-column {
-            background-color: #fbf9f4;
-            border: 2px solid #111111;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 2px 2px 0px #111111;
-        }
-        .chain-header {
-            background-color: #111111;
-            color: #ffffff;
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 8px 6px;
-            font-size: 17px;
-            letter-spacing: 0.5px;
-        }
-        .chain-progress {
-            background-color: #e8e3d7;
-            border-bottom: 1px solid #111111;
-            font-size: 12px;
-            text-align: center;
-            padding: 4px;
-            font-weight: bold;
-        }
-        .ladder-stack {
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            border-bottom: 2px solid #111111;
-            background-color: #ffffff;
-        }
-        .ladder-word {
-            border: 1px solid #111111;
-            padding: 6px 8px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 15px;
-            letter-spacing: 1px;
-            background-color: #f4f1ea;
-        }
-        .ladder-word.start-word {
-            background-color: #111111;
-            color: #ffffff;
-        }
-        .ladder-word.latest-word {
-            background-color: #fff3cd;
-            border: 2px solid #111111;
-        }
-        .ladder-word.final-word {
-            background-color: #d4edda;
-            border: 2px solid #155724;
-            color: #155724;
-        }
-        .entry-area {
-            padding: 10px;
-            background-color: #f1ede4;
-            border-bottom: 1px solid #111111;
-        }
-        .entry-form {
-            display: flex;
-            gap: 5px;
-        }
-        .entry-input {
-            width: 100%;
-            padding: 7px;
-            font-family: 'Courier Prime', monospace;
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-            border: 1px solid #111111;
-            box-sizing: border-box;
-        }
-        .entry-btn {
-            background-color: #111111;
-            color: #ffffff;
-            border: none;
-            padding: 0 10px;
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .entry-btn:hover { background-color: #333333; }
-        .feedback-msg {
-            font-size: 11px;
-            min-height: 14px;
-            margin-top: 5px;
-            text-align: center;
-            font-weight: bold;
-        }
-        .feedback-error { color: #a90000; }
-        .feedback-success { color: #155724; }
-        .clues-container {
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .clues-label {
-            font-family: 'Oswald', sans-serif;
-            font-size: 12px;
-            text-transform: uppercase;
-            color: #555;
-            letter-spacing: 0.5px;
-        }
-        .clue-item {
-            background-color: #ffffff;
-            border: 1px solid #888;
-            padding: 7px 8px;
-            font-size: 12.5px;
-            line-height: 1.35;
-            cursor: pointer;
-            text-align: left;
-        }
-        .clue-item:hover {
-            border-color: #111111;
-            background-color: #f7f4eb;
-        }
-        .clue-item.selected-clue {
-            border: 2px solid #111111;
-            background-color: #fff3cd;
-            font-weight: bold;
-        }
-        .first-token {
-            background-color: #111111;
-            color: #ffffff;
-            padding: 1px 4px;
-            font-size: 11.5px;
-            border-radius: 2px;
-        }
-        .solved-banner {
-            padding: 15px 10px;
-            text-align: center;
-            background-color: #d4edda;
-            color: #155724;
-            font-weight: bold;
-            font-size: 14px;
-        }
-    </style>
+    <title>Daily Bugle - Villain Word Ladders</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="raddle-embed">
 
-<div class="raddle-wrapper">
-    <div class="raddle-instructions">
-        <strong>HOW TO PLAY:</strong> Solve the START clue at the top of each chain first, then use the remaining clues to step down the ladder. Type your guess and press <strong>Enter</strong>.
-    </div>
-    <div class="chains-grid" id="chains-grid"></div>
+<div class="raddle-instructions">
+    <strong>HOW TO PLAY:</strong> Click a villain portrait below to open their clue ladder. Solve the <strong>START</strong> clue first, then use the alphabetical clues on the right to step down the chain. Thanks and credit for puzzle type/presentation to Sandy Weisz and raddle.quest!
 </div>
+<div class="villain-tabs" id="villain-tabs"></div>
+<div class="active-workspace" id="active-workspace"></div>
 
 <script>
     const PUZZLES = [
-        {
-            id: "shriek",
-            title: "1. Shriek",
-            shuffleClues: true,
+                {
+            id: "chameleon",
+            title: "Chameleon",
+            image: "chameleon.jpg",
+		prevAnswer: "RED PANDA",
+
             steps: [
+                { answer: "FIREFOX", clue: "What is CHAMELEON using to try and look up Spider-man's identity?" },
+                { answer: "RED FOX", clue: "Change the first four letters of <FIRST> to a color that commonly represents them" },
+                { answer: "REDD FOXX", clue: "Add a different letter to the end of each of word in <FIRST> to get a comedian" },
+                { answer: "SANFORD", clue: "_______ is <FIRST>'s real last name, and the name of his most famous character" },
+                { answer: "FORD", clue: "Remove the first three letters of <FIRST> to get a vehicle" },
+                { answer: "NIXON", clue: "_______ is the President before <FIRST>" },
+                { answer: "NEON", clue: "Replace the longest Roman numeral in <FIRST> with an \"E\"" },
+                { answer: "NEO", clue: "Drop the last letter in <FIRST> to get a sci-fi movie character" },
+                { answer: "NEW", clue: "<FIRST> is a prefix, meaning _________." }
+            ]
+        },
+{
+            id: "kraven",
+            title: "Kraven",
+            image: "kraven.jpg",
+	prevAnswer: "BIG GAME",
+            steps: [
+                { answer: "SAFARI", clue: "What is KRAVEN using to try and look up Spider-man's identity?" },
+                { answer: "AFRICA", clue: "The continent you might visit for a <FIRST>" },
+                { answer: "TOTO", clue: "The band famous for <FIRST>" },
+                { answer: "DOROTHY", clue: "<FIRST>'s human friend" },
+                { answer: "DOT", clue: "_______ is a nickname for <FIRST>" },
+                { answer: "DASH", clue: "The opposite of <FIRST>, especially here" },
+                { answer: "TEASPOON", clue: "Eight times <FIRST>" },
+                { answer: "TSP", clue: "The common abbreviation for <FIRST>" },
+                { answer: "FEB", clue: "<FIRST>, Caesar-shifted 12 letters" },
+                { answer: "DAY", clue: "<FIRST> contains fewer of one of these than it's counterparts" },
+                { answer: "DAILY", clue: "The adjective for something that occurs once every <FIRST>" }
+            ]
+        },
+       {
+            id: "docock",
+            title: "Doc Ock",
+            image: "docock.jpg",
+prevAnswer: "METALLIC",
+            steps: [
+                { answer: "CHROME", clue: "What is DOC OCK using to try and look up Spider-man's identity?" },
+                { answer: "ITALY", clue: "The last four letters of <FIRST> are the capital of _______" },
+                { answer: "CIAO", clue: "How one says goodbye in <FIRST>" },
+                { answer: "CHOW", clue: "A common homophone of <FIRST>" },
+                { answer: "MUNCH", clue: "A synonym of <FIRST> that rhymes with one of three major times ones might do it" },
+                { answer: "THE SCREAM", clue: "<FIRST>'s most famous work" },
+                { answer: "SHRIEK", clue: "A synonym of <FIRST> that happens to be one of the other Villains" },
+                { answer: "SHREK", clue: "Remove a letter from <FIRST> to get a movie character" },
+                { answer: "OGRE", clue: "<FIRST> is a _______" },
+                { answer: "OGLE", clue: "Change the third letter of <FIRST> to get a verb with a sinful connotation" },
+                { answer: "GOOGLE", clue: "Prepend the first two letters of <FIRST> back onto <FIRST>" }
+            ]
+        },
+{
+            id: "shriek",
+            title: "Shriek",
+            image: "shriek.jpg",
+            prevAnswer: "HIGH NOTE",
+steps: [
                 { answer: "OPERA", clue: "What is SHRIEK using to try and look up Spider-man's identity?" },
                 { answer: "OPERATION", clue: "Append four letters to <FIRST> to get the name of a board game" },
                 { answer: "CAVITY", clue: "The first name of the only character in <FIRST>" },
@@ -212,220 +89,169 @@ body {
                 { answer: "WEB", clue: "Remove the second letter of <FIRST> and reverse the rest" }
             ]
         },
-        {
-            id: "kraven",
-            title: "2. Kraven",
-            shuffleClues: true,
-            steps: [
-                { answer: "HUNT", clue: "What KRAVEN is famous for doing" },
-                { answer: "HUNTER", clue: "Add two letters to <FIRST> to get a person who tracks prey" },
-                { answer: "GATHERER", clue: "Traditional counterpart to a <FIRST>" },
-                { answer: "GATHER", clue: "Drop the last two letters of <FIRST>" }
-            ]
-        },
-        {
+
+{
             id: "negative",
-            title: "3. Mr. Negative",
-            shuffleClues: true,
-            steps: [
-                { answer: "SHADOW", clue: "Dark silhouette cast by MR. NEGATIVE" },
-                { answer: "BOX", clue: "<FIRST>ing is a combat sport" },
-                { answer: "FOX", clue: "Change the first letter of <FIRST> to get a sly animal" }
-            ]
-        },
-        {
-            id: "docock",
-            title: "4. Doc Ock",
-            shuffleClues: true,
-            steps: [
-                { answer: "ARMS", clue: "DOC OCK has four extra mechanical ones" },
-                { answer: "MARS", clue: "Anagram <FIRST> to get a planet" },
-                { answer: "BARS", clue: "<FIRST> are chocolate treats named after the previous word" }
-            ]
-        },
-        {
-            id: "chameleon",
-            title: "5. Chameleon",
-            shuffleClues: true,
-            steps: [
-                { answer: "MASK", clue: "Signature disguise worn by CHAMELEON" },
-                { answer: "TASK", clue: "Change the first letter of <FIRST> to get a chore or assignment" },
-                { answer: "TUSK", clue: "Change the vowel in <FIRST> to get an elephant feature" }
+            title: "Mr. Negative",
+            image: "mrnegative.jpg",
+            prevAnswer: "FRINGE",
+steps: [
+                { answer: "EDGE", clue: "What is MR. NEGATIVE using to try and look up Spider-man's identity?" },
+                { answer: "HEDGE", clue: "Prepend a new letter onto <FIRST> to get something trimmable" },
+                { answer: "MAZE", clue: "A common puzzle word that most commonly follows <FIRST>" },
+                { answer: "PRAISE", clue: "Change the starting phoneme of <FIRST> to \"pr\" to make an appreciative word" },
+                { answer: "REVERE", clue: "A synonym of <FIRST> that is also a famous last name in US History" },
+                { answer: "REDCOAT", clue: "The kind of garment associated with <FIRST>'s words" },
+                { answer: "ART DECO", clue: "A fashionable transposal of <FIRST>" },
+                { answer: "ZYDECO", clue: "Replace the first three letters of <FIRST> with two new letters and get ready to dance" },
+                { answer: "ZODIAC", clue: "A consonantcy of <FIRST>" },
+                { answer: "SIGN", clue: "The most common word to follow <FIRST>" },
+                { answer: "DESIGNER", clue: "Surround <FIRST> with a four letter mammal to create a profession" }
             ]
         }
     ];
-
+    let activePuzzleId = PUZZLES.at(0).id;
     const puzzleState = {};
 
     function initPuzzles() {
-        const grid = document.getElementById("chains-grid");
-        if (!grid) return;
-        grid.innerHTML = "";
-
         PUZZLES.forEach(function(puzzle) {
-            const remainingIndices = puzzle.steps.map(function(_, idx) { return idx; }).slice(1);
-const orderedSubsequent = remainingIndices.sort(function(a, b) {
-    const clueA = puzzle.steps.at(a).clue.replace(/<FIRST>/gi, "").trim().toLowerCase();
-    const clueB = puzzle.steps.at(b).clue.replace(/<FIRST>/gi, "").trim().toLowerCase();
-    return clueA.localeCompare(clueB);
-});
-const clueIndices = Array.of(0).concat(orderedSubsequent);
-
+            const remaining = puzzle.steps.map(function(_, idx) { return idx; }).slice(1);
+            const sorted = remaining.sort(function(a, b) {
+                const clueA = puzzle.steps.at(a).clue.replace(/<FIRST>/gi, "").trim().toLowerCase();
+                const clueB = puzzle.steps.at(b).clue.replace(/<FIRST>/gi, "").trim().toLowerCase();
+                return clueA.localeCompare(clueB);
+            });
             puzzleState[puzzle.id] = {
                 currentStepIndex: 0,
                 solvedWords: [],
-                clueOrder: clueIndices,
+                clueOrder: Array.of(0).concat(sorted),
                 selectedClueStepIndex: 0,
                 feedback: "",
                 feedbackType: ""
             };
-
-            const col = document.createElement("div");
-            col.className = "chain-column";
-            col.id = "chain-" + puzzle.id;
-            grid.appendChild(col);
-
-            renderChain(puzzle.id);
         });
+        renderAll();
     }
 
-    function renderChain(puzzleId) {
-        const puzzle = PUZZLES.find(function(p) { return p.id === puzzleId; });
-        const state = puzzleState[puzzleId];
-        const col = document.getElementById("chain-" + puzzleId);
-        const isComplete = state.currentStepIndex >= puzzle.steps.length;
-        const currentTopWord = state.solvedWords.length > 0 ? state.solvedWords.at(-1) : "?";
-
-        let ladderSectionHtml = "";
-        if (state.solvedWords.length > 0) {
-            const ladderHtml = state.solvedWords.map(function(word, idx) {
-                let extraClass = "";
-                if (idx === 0) extraClass = "start-word";
-                else if (isComplete && idx === state.solvedWords.length - 1) extraClass = "final-word";
-                else if (idx === state.solvedWords.length - 1) extraClass = "latest-word";
-                return '<div class="ladder-word ' + extraClass + '">' + escapeHtml(word) + '</div>';
-            }).join("");
-            ladderSectionHtml = '<div class="ladder-stack">' + ladderHtml + '</div>';
-        }
-
-        let middleHtml = "";
-        if (!isComplete) {
-            const nextWordLength = puzzle.steps.at(state.currentStepIndex).answer.trim().length;
-	const placeholderText = nextWordLength + (nextWordLength === 1 ? " letter" : " letters");
-            const feedbackClass = state.feedbackType === "error" ? "feedback-error" : "feedback-success";
-            middleHtml =
-                '<div class="entry-area">' +
-                    '<form class="entry-form" onsubmit="handleGuess(event, \'' + puzzle.id + '\')">' +
-                        '<input type="text" class="entry-input" id="input-' + puzzle.id + '" placeholder="' + placeholderText + '" autocomplete="off" />' +
-                        '<button type="submit" class="entry-btn">Go</button>' +
-                    '</form>' +
-                    '<div class="feedback-msg ' + feedbackClass + '">' + escapeHtml(state.feedback) + '</div>' +
-                '</div>';
-        } else {
-            middleHtml = '<div class="solved-banner">CHAIN COMPLETE!</div>';
-        }
-
-        let cluesHtml = "";
-        if (!isComplete) {
-            const remainingClues = state.clueOrder.filter(function(stepIdx) {
-                return stepIdx >= state.currentStepIndex;
-            });
-
-            if (!remainingClues.includes(state.selectedClueStepIndex)) {
-                state.selectedClueStepIndex = remainingClues.at(0);
-            }
-
-            const clueButtons = remainingClues.map(function(stepIdx) {
-                const rawClue = puzzle.steps.at(stepIdx).clue;
-                const formattedClue = formatClueText(rawClue, currentTopWord);
-                const isSelected = stepIdx === state.selectedClueStepIndex;
-                const selectedClass = isSelected ? "selected-clue" : "";
-                const starterBadge = stepIdx === 0 ? '<span class="first-token" style="margin-right: 4px;">START</span>' : "";
-
-                return '<button type="button" class="clue-item ' + selectedClass + '" onclick="selectClue(\'' + puzzle.id + '\', ' + stepIdx + ')">' +
-                    starterBadge + formattedClue +
-                '</button>';
-            }).join("");
-
-            cluesHtml =
-                '<div class="clues-container">' +
-                    '<div class="clues-label">Available Clues (' + remainingClues.length + ' left):</div>' +
-                    clueButtons +
-                '</div>';
-        }
-
-        col.innerHTML =
-            '<div class="chain-header">' + escapeHtml(puzzle.title) + '</div>' +
-            '<div class="chain-progress">Solved: ' + state.currentStepIndex + ' / ' + puzzle.steps.length + '</div>' +
-            ladderSectionHtml +
-            middleHtml +
-            cluesHtml;
-    }
-
-    function selectClue(puzzleId, stepIdx) {
-        puzzleState[puzzleId].selectedClueStepIndex = stepIdx;
-        puzzleState[puzzleId].feedback = "";
-        renderChain(puzzleId);
-        const inputEl = document.getElementById("input-" + puzzleId);
+    function switchTab(puzzleId) {
+        activePuzzleId = puzzleId;
+        renderAll();
+        const inputEl = document.getElementById("active-entry-input");
         if (inputEl) inputEl.focus();
     }
 
-    function handleGuess(event, puzzleId) {
+    function renderAll() {
+        renderTabs();
+        renderActiveWorkspace();
+    }
+
+    function renderTabs() {
+        const tabsContainer = document.getElementById("villain-tabs");
+        if (!tabsContainer) return;
+
+        tabsContainer.innerHTML = PUZZLES.map(function(puzzle) {
+            const state = puzzleState[puzzle.id];
+            const isActive = puzzle.id === activePuzzleId;
+            const isComplete = state.currentStepIndex >= puzzle.steps.length;
+            const statusText = isComplete ? escapeHtml(state.solvedWords.at(-1)) : state.currentStepIndex + " / " + puzzle.steps.length;
+
+            return '<button type="button" class="villain-tab-btn ' + (isActive ? "active-tab " : "") + (isComplete ? "solved-tab" : "") + '" onclick="switchTab(\'' + puzzle.id + '\')">' +
+                '<div class="tab-villain-name">' + escapeHtml(puzzle.title) + '</div>' +
+                '<img src="' + escapeHtml(puzzle.image) + '" alt="' + escapeHtml(puzzle.title) + '" class="tab-villain-img" />' +
+                '<div class="tab-prev-answer">' + escapeHtml(puzzle.prevAnswer) + '</div>' +
+                '<div class="tab-status-badge">' + statusText + '</div>' +
+            '</button>';
+        }).join("");
+    }
+
+    function renderActiveWorkspace() {
+        const workspace = document.getElementById("active-workspace");
+        if (!workspace) return;
+
+        const puzzle = PUZZLES.find(function(p) { return p.id === activePuzzleId; });
+        const state = puzzleState[puzzle.id];
+        const isComplete = state.currentStepIndex >= puzzle.steps.length;
+        const currentTopWord = state.solvedWords.length > 0 ? state.solvedWords.at(-1) : "?";
+
+        let ladderHtml = "";
+        if (state.solvedWords.length > 0) {
+            const items = state.solvedWords.map(function(word, idx) {
+                let cls = idx === 0 ? "start-word" : (isComplete && idx === state.solvedWords.length - 1 ? "final-word" : (idx === state.solvedWords.length - 1 ? "latest-word" : ""));
+                return '<div class="ladder-word ' + cls + '">' + escapeHtml(word) + '</div>';
+            }).join("");
+            ladderHtml = '<div class="ladder-stack">' + items + '</div>';
+        }
+
+        let entryHtml = "";
+        if (!isComplete) {
+            const len = puzzle.steps.at(state.currentStepIndex).answer.replace(/\s+/g, "").length;
+            const placeholder = len + (len === 1 ? " letter" : " letters");
+            const fbClass = state.feedbackType === "error" ? "feedback-error" : "feedback-success";
+            entryHtml = '<form class="entry-form" onsubmit="handleGuess(event)"><input type="text" class="entry-input" id="active-entry-input" placeholder="' + placeholder + '" autocomplete="off" /><button type="submit" class="entry-btn">Go</button></form><div class="feedback-msg ' + fbClass + '">' + escapeHtml(state.feedback) + '</div>';
+        } else {
+            entryHtml = '<div class="solved-banner">CHAIN COMPLETE!</div>';
+        }
+
+        let cluesPanelHtml = "";
+        if (!isComplete) {
+            const remaining = state.clueOrder.filter(function(idx) { return idx >= state.currentStepIndex; });
+            if (!remaining.includes(state.selectedClueStepIndex)) state.selectedClueStepIndex = remaining.at(0);
+
+            const clueButtons = remaining.map(function(stepIdx) {
+                const formatted = escapeHtml(puzzle.steps.at(stepIdx).clue).replace(/&lt;FIRST&gt;/gi, '<span class="first-token">' + escapeHtml(currentTopWord) + '</span>');
+                const sel = stepIdx === state.selectedClueStepIndex ? "selected-clue" : "";
+                const badge = stepIdx === 0 ? '<span class="first-token" style="margin-right: 6px;">START</span>' : "";
+                return '<button type="button" class="clue-item ' + sel + '" onclick="selectClue(' + stepIdx + ')">' + badge + formatted + '</button>';
+            }).join("");
+
+            cluesPanelHtml = '<div class="clues-panel"><div class="panel-label">Available Clues (' + remaining.length + ' remaining)</div>' + clueButtons + '</div>';
+        } else {
+            cluesPanelHtml = '<div class="clues-panel"><div class="panel-label">Case File Closed</div><div style="padding:15px;background:#fff;border:1px solid #ccc;font-size:14px;">All steps for <strong>' + escapeHtml(puzzle.title) + '</strong> solved! Click another villain portrait above to continue.</div></div>';
+        }
+
+        workspace.innerHTML =
+            '<div class="workspace-header"><span>' + escapeHtml(puzzle.title) + ' — Word Chain</span><span>Progress: ' + state.currentStepIndex + ' / ' + puzzle.steps.length + '</span></div>' +
+            '<div class="workspace-body"><div class="ladder-panel"><div class="panel-label">Word Ladder</div>' + ladderHtml + entryHtml + '</div>' + cluesPanelHtml + '</div>';
+    }
+
+    function selectClue(stepIdx) {
+        puzzleState[activePuzzleId].selectedClueStepIndex = stepIdx;
+        puzzleState[activePuzzleId].feedback = "";
+        renderActiveWorkspace();
+        const inputEl = document.getElementById("active-entry-input");
+        if (inputEl) inputEl.focus();
+    }
+
+    function handleGuess(event) {
         event.preventDefault();
-        const puzzle = PUZZLES.find(function(p) { return p.id === puzzleId; });
-        const state = puzzleState[puzzleId];
-        const inputEl = document.getElementById("input-" + puzzleId);
+        const puzzle = PUZZLES.find(function(p) { return p.id === activePuzzleId; });
+        const state = puzzleState[activePuzzleId];
+        const inputEl = document.getElementById("active-entry-input");
         if (!inputEl) return;
 
         const guess = inputEl.value.trim().toUpperCase();
         if (!guess) return;
 
-        const expectedAnswer = puzzle.steps.at(state.currentStepIndex).answer.trim().toUpperCase();
-
-        if (guess === expectedAnswer) {
-            state.solvedWords.push(expectedAnswer);
+        const expected = puzzle.steps.at(state.currentStepIndex).answer.trim().toUpperCase();
+        if (guess === expected) {
+            state.solvedWords.push(expected);
             state.currentStepIndex += 1;
             state.feedback = "Correct!";
             state.feedbackType = "success";
-            renderChain(puzzleId);
-
-            const nextInput = document.getElementById("input-" + puzzleId);
+            renderAll();
+            const nextInput = document.getElementById("active-entry-input");
             if (nextInput) nextInput.focus();
         } else {
             state.feedback = '"' + guess + '" is not the next word.';
             state.feedbackType = "error";
-            renderChain(puzzleId);
-            const retryInput = document.getElementById("input-" + puzzleId);
-            if (retryInput) {
-                retryInput.value = guess;
-                retryInput.select();
-            }
+            renderActiveWorkspace();
+            const retryInput = document.getElementById("active-entry-input");
+            if (retryInput) { retryInput.value = guess; retryInput.select(); }
         }
-    }
-
-    function formatClueText(clueTemplate, currentWord) {
-        const safeTemplate = escapeHtml(clueTemplate);
-        const safeWord = '<span class="first-token">' + escapeHtml(currentWord) + '</span>';
-        return safeTemplate.replace(/&lt;FIRST&gt;/gi, safeWord);
-    }
-
-    function shuffleArray(arr) {
-        const copy = Array.from(arr);
-        for (let i = copy.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            const temp = copy.at(i);
-            copy[i] = copy.at(j);
-            copy[j] = temp;
-        }
-        return copy;
     }
 
     function escapeHtml(str) {
-        return String(str)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;");
+        return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
     initPuzzles();
