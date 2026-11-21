@@ -200,24 +200,78 @@
 <!-- LEFT COLUMN: The Puzzle and Story -->
 		<article class="left-column">
 		<div class="puzzle-body">
-			<p>Insert appropriate puzzle flavor here.</p>
+			<!-- <p>Insert appropriate puzzle flavor here.</p> -->
                
 <!-- UNIFIED PUZZLE BOX CONTAINER -->
                 	<div class="puzzle-box" style="font-family: 'Courier Prime', monospace;">
                     
 <!-- [SECTION 1] SINGLE COLUMN TEXT -->
 				<div style="margin-bottom: 20px;">
-					<h3 style="text-align:center">Puzzle title</h3>
+					<h3 style="text-align:center">Doc Ock</h3>
 
 <!-- Standard paragraph text without drop-caps -->
-					<p>Puzzle text,</p>
+					<p>Click below to either download a .pdf of the puzzle for printing, or to copy a digital version into your clipboard for google sheets</p>
 				</div>
 
 <!-- [SECTION 2] MULTI-COLUMN CONTENT INSIDE THE BOX -->
                     
 <!-- [SECTION 3] ANOTHER SINGLE COLUMN TEXT -->
 				<div>
-				For test purposes, use answer METALLIC for Doc Ock
+				<div style="margin-bottom: 12px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <!-- Left Button: Download PDF -->
+        <a href="DOC OCK.pdf" download style="display: flex; align-items: center; justify-content: center; background: #111; color: #fff; font-family: 'Oswald', sans-serif; font-size: 14px; padding: 10px 14px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; box-sizing: border-box;">
+            Download Printable PDF
+        </a>
+
+        <!-- Right Button: Copy for Google Sheets -->
+        <button type="button" id="copy-sheet-btn" onclick="copyPuzzleToClipboard()" style="display: flex; align-items: center; justify-content: center; width: 100%; background: #111; color: #fff; font-family: 'Oswald', sans-serif; font-size: 14px; padding: 10px 14px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; box-sizing: border-box;">
+            Copy Puzzle for Google Sheets
+        </button>
+    </div>
+    <div id="copy-status" style="font-size: 13px; font-weight: bold; color: #155724; text-align: right; min-height: 18px; margin-top: 4px;"></div>
+</div>
+
+<!-- Hidden container holding your exact Google Sheets tab-separated data -->
+<textarea id="sheet-puzzle-data" style="display: none;">DOC OCK															
+Written by WXYZ															
+															
+Doc Ock is upgrading his gear to feature some new elements. However, as he is assembling different components, he notices some problems. There is, however, one aspect he wants to retain as he builds the perfect suit.															
+															
+ABI	BEL	BEN	BRO	CA											
+CAN	CE	CHI	CKE	COH											
+DMA	EAG	ED	ERS	ES											
+ESS	EVO	GAZ	GR	GS											
+INA	INE	ION	KEN	LEN											
+LEV	LIM	LIN	MA	MOU											
+NLE	OL	ONY	ORI	PRO											
+SEB	TAN	TEG	TI	TON											
+TS	UER	UT	ZED												
+															
+(Google copying note: Shrink Columns F-P for ease of entering one character per square)															
+															
+Arranged by type															
+															
+A series of dashes perhaps (2 words)															
+															
+A periodical from a long time ago (2 words)															
+															
+Drumsticks (2 words)															
+															
+Housemates															
+															
+Projecting beams															
+															
+Something to click on at your desk (2 words)															
+															
+Suffering from constant trouble															
+															
+The act of moving forward															
+															
+The primary payment to a former spouse, perhaps (2 words)															
+															
+The quality of being kind															</textarea>
+
 				</div>
 
                 	</div> <!-- END OF UNIFIED PUZZLE BOX -->
