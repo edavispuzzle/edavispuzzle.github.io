@@ -52,52 +52,16 @@
 <!-- [SECTION 3] ANOTHER SINGLE COLUMN TEXT -->
 				<div>
 				<div class="puzzle-actions-grid">
-    <a href="DOC OCK.pdf" download class="puzzle-action-btn">Download Printable PDF</a>
-    <button type="button" id="copy-sheet-btn" class="puzzle-action-btn" onclick="copyPuzzleToClipboard()">Copy Puzzle for Google Sheets</button>
+    <!-- Left Button: Download PDF -->
+    <a href="DOC OCK.pdf" target="_blank" rel="noopener noreferrer" download class="puzzle-action-btn">
+        Download Printable PDF
+    </a>
+
+    <!-- Right Button: Make a Copy in Google Sheets -->
+    <a href="https://docs.google.com/spreadsheets/d/1Rmhl_yGaPna9k2aYy9PQkztP7G0WPifxArpXhfVytpA/copy" target="_blank" rel="noopener noreferrer" class="puzzle-action-btn">
+        Open Copy in Google Sheets
+    </a>
 </div>
-
-<textarea id="sheet-puzzle-data" class="hidden-sheet-data">
-DOC OCK															
-Written by WXYZ															
-															
-Doc Ock is upgrading his gear to feature some new elements. However, as he is assembling different components, he notices some problems. There is, however, one aspect he wants to retain as he builds the perfect suit.															
-															
-ABI	BEL	BEN	BRO	CA											
-CAN	CE	CHI	CKE	COH											
-DMA	EAG	ED	ERS	ES											
-ESS	EVO	GAZ	GR	GS											
-INA	INE	ION	KEN	LEN											
-LEV	LIM	LIN	MA	MOU											
-NLE	OL	ONY	ORI	PRO											
-SEB	TAN	TEG	TI	TON											
-TS	UER	UT	ZED												
-															
-(Google copying note: Shrink Columns F-P for ease of entering one character per square)															
-															
-Arranged by type															
-															
-A series of dashes perhaps (2 words)															
-															
-A periodical from a long time ago (2 words)															
-															
-Drumsticks (2 words)															
-															
-Housemates															
-															
-Projecting beams															
-															
-Something to click on at your desk (2 words)															
-															
-Suffering from constant trouble															
-															
-The act of moving forward															
-															
-The primary payment to a former spouse, perhaps (2 words)															
-															
-The quality of being kind
-
-</textarea>															
-				</div>
 
                 	</div> <!-- END OF UNIFIED PUZZLE BOX -->
 
@@ -316,59 +280,7 @@ document.addEventListener("DOMContentLoaded", updateSidebarProgress);
 
 
 
-<div id="copy-toast" class="copy-toast">Copied to clipboard!</div>
 
-<script>
-    var toastTimer;
-
-    function showCopyAlert() {
-        var toast = document.getElementById("copy-toast");
-        var btn = document.getElementById("copy-sheet-btn");
-
-        if (toast) {
-            toast.classList.add("show-toast");
-        }
-
-        if (btn) {
-            btn.textContent = "Copied to Clipboard!";
-            btn.classList.add("copied-success");
-            setTimeout(function() {
-                btn.textContent = "Copy Puzzle for Google Sheets";
-                btn.classList.remove("copied-success");
-            }, 2500);
-        }
-
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(function() {
-            if (toast) {
-                toast.classList.remove("show-toast");
-            }
-        }, 2500);
-    }
-
-    function copyPuzzleToClipboard() {
-        var dataBox = document.getElementById("sheet-puzzle-data");
-        if (!dataBox) return;
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(dataBox.value).then(function() {
-                showCopyAlert();
-            }).catch(function() {
-                fallbackCopy(dataBox);
-            });
-        } else {
-            fallbackCopy(dataBox);
-        }
-    }
-
-    function fallbackCopy(dataBox) {
-        dataBox.classList.remove("hidden-sheet-data");
-        dataBox.select();
-        document.execCommand("copy");
-        dataBox.classList.add("hidden-sheet-data");
-        showCopyAlert();
-    }
-</script>
 
 
 </body>
