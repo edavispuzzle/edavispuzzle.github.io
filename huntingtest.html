@@ -15,99 +15,304 @@
 <div class="active-workspace" id="active-workspace"></div>
 
 <script>
-    const PUZZLES = [
+   
+
+ const PUZZLES = [
                 {
             id: "chameleon",
             title: "Chameleon",
             image: "chameleon.jpg",
-		prevAnswer: "RED PANDA",
-
-            steps: [
-                { answer: "FIREFOX", clue: "What is CHAMELEON using to try and look up Spider-man's identity?" },
-                { answer: "RED FOX", clue: "Change the first four letters of <FIRST> to a color that commonly represents them" },
-                { answer: "REDD FOXX", clue: "Add a different letter to the end of each of word in <FIRST> to get a comedian" },
-                { answer: "SANFORD", clue: "_______ is <FIRST>'s real last name, and the name of his most famous character" },
-                { answer: "FORD", clue: "Remove the first three letters of <FIRST> to get a vehicle" },
-                { answer: "NIXON", clue: "_______ is the President before <FIRST>" },
-                { answer: "NEON", clue: "Replace the longest Roman numeral in <FIRST> with an \"E\"" },
-                { answer: "NEO", clue: "Drop the last letter in <FIRST> to get a sci-fi movie character" },
-                { answer: "NEW", clue: "<FIRST> is a prefix, meaning _________." }
-            ]
+		"prevAnswer": "RED PANDA",
+        "steps": [
+            {
+                "answerHash": "efa5c1ef07d5f3624c22fc91581755760579ab119bc4136416181ad6933d2e0e",
+                "length": 7,
+                "clue": "What is CHAMELEON using to try and look up Spider-man's identity?"
+            },
+            {
+                "answerHash": "78fbb2bd0a7557c08b42114cc4c2c80318147fa810a3db5203ad9a4dd30651bf",
+                "length": 6,
+                "clue": "Change the first four letters of <FIRST> to a color that commonly represents them"
+            },
+            {
+                "answerHash": "9d56e392c3803e733f7134403cfe647345f092c2cb12fb5b6cbc5d784b6e564f",
+                "length": 8,
+                "clue": "Add a different letter to the end of each of word in <FIRST> to get a comedian"
+            },
+            {
+                "answerHash": "bebb4c4f8396e069e8f11409c13ddc3411aae379436dcc214f94c311fd56ca3c",
+                "length": 7,
+                "clue": "_______ is <FIRST>'s real last name, and the name of his most famous character"
+            },
+            {
+                "answerHash": "3bd599c434bb5590c0c598fc33c5a54c9e33c2a6b7b3ddeedd3fc81a0327551d",
+                "length": 4,
+                "clue": "Remove the first three letters of <FIRST> to get a vehicle"
+            },
+            {
+                "answerHash": "fd3fd6901ee3264f4ef001a4bc4df2804aaffa6b590480418ded70a13e28bcd7",
+                "length": 5,
+                "clue": "_______ is the President before <FIRST>"
+            },
+            {
+                "answerHash": "5905b7a0cd6bdafbce3c4e45785499e04db1b2a561c887d74afb9ba6365f973e",
+                "length": 4,
+                "clue": "Replace the longest Roman numeral in <FIRST> with an \"E\""
+            },
+            {
+                "answerHash": "1a259dba256600620c6c91094f3a300b30f0cbaecee19c6114deffd3288957d7",
+                "length": 3,
+                "clue": "Drop the last letter in <FIRST> to get a sci-fi movie character"
+            },
+            {
+                "answerHash": "a253ff09c5a8678e1fd1962b2c329245e139e45f9cc6ced4e5d7ad42c4108fc0",
+                "length": 3,
+                "clue": "<FIRST> is a prefix, meaning _________."
+            }
+        ]
         },
 {
             id: "kraven",
             title: "Kraven",
             image: "kraven.jpg",
-	prevAnswer: "BIG GAME",
-            steps: [
-                { answer: "SAFARI", clue: "What is KRAVEN using to try and look up Spider-man's identity?" },
-                { answer: "AFRICA", clue: "The continent you might visit for a <FIRST>" },
-                { answer: "TOTO", clue: "The band famous for <FIRST>" },
-                { answer: "DOROTHY", clue: "<FIRST>'s human friend" },
-                { answer: "DOT", clue: "_______ is a nickname for <FIRST>" },
-                { answer: "DASH", clue: "The opposite of <FIRST>, especially here" },
-                { answer: "TEASPOON", clue: "Eight times <FIRST>" },
-                { answer: "TSP", clue: "The common abbreviation for <FIRST>" },
-                { answer: "FEB", clue: "<FIRST>, Caesar-shifted 12 letters" },
-                { answer: "DAY", clue: "<FIRST> contains fewer of one of these than it's counterparts" },
-                { answer: "DAILY", clue: "The adjective for something that occurs once every <FIRST>" }
-            ]
+		"prevAnswer": "BIG GAME",
+        "steps": [
+            {
+                "answerHash": "16cf6715167ee8d128af12c3177096645c91faf1470c42cecca347f9a0469307",
+                "length": 6,
+                "clue": "What is KRAVEN using to try and look up Spider-man's identity?"
+            },
+            {
+                "answerHash": "d817dc954f5c0d6a5e725abcbc6b4d009a1a7e03ec81c30dc1d8bcf643fb8417",
+                "length": 6,
+                "clue": "The continent you might visit for a <FIRST>"
+            },
+            {
+                "answerHash": "f2efb991e19f0edff35aa412b47e49be6f4f694028fe15598951619de915d54a",
+                "length": 4,
+                "clue": "The band famous for <FIRST>"
+            },
+            {
+                "answerHash": "f6c5f40dd7d75ef663364e88459e9eb167a381cf31b18061599e7bec9c25ad44",
+                "length": 7,
+                "clue": "<FIRST>'s human friend"
+            },
+            {
+                "answerHash": "4bf03efe2ec7be1916ad27a674a99d343b26c5f9c25939d2569676a8257ddb02",
+                "length": 3,
+                "clue": "_______ is a nickname for <FIRST>"
+            },
+            {
+                "answerHash": "1ce382dc148a7555d0be908bc34baf90747d5d1cded629847dcd8d8e16dcf16f",
+                "length": 4,
+                "clue": "The opposite of <FIRST>, especially here"
+            },
+            {
+                "answerHash": "123b21a42eff3067b7cdcd418bf580758e49eda284937cfee90adf8d07b6a2ea",
+                "length": 8,
+                "clue": "Eight times <FIRST>"
+            },
+            {
+                "answerHash": "70f74088c47d66bd3740825fd9f5c94eb3f187e6e9f74991a82936dcb2349b7c",
+                "length": 3,
+                "clue": "The common abbreviation for <FIRST>"
+            },
+            {
+                "answerHash": "1c429b61ca094cf08f6b18b953b8dc67dbed4027cc3f4cc93435e3696ad9cd07",
+                "length": 3,
+                "clue": "<FIRST>, Caesar-shifted 12 letters"
+            },
+            {
+                "answerHash": "c45bc4a7dc2c7ac5b8ecc864507a90b6cb579d280b6c1eaf5db524c5e265baf7",
+                "length": 3,
+                "clue": "<FIRST> contains fewer of one of these than it's counterparts"
+            },
+            {
+                "answerHash": "915f3942e1bbdb301830ed1faef13addefdced371a3944bb037339ee02e3ba7a",
+                "length": 5,
+                "clue": "The adjective for something that occurs once every <FIRST>"
+            }
+        ]
         },
        {
             id: "docock",
             title: "Doc Ock",
             image: "docock.jpg",
-prevAnswer: "METALLIC",
-            steps: [
-                { answer: "CHROME", clue: "What is DOC OCK using to try and look up Spider-man's identity?" },
-                { answer: "ITALY", clue: "The last four letters of <FIRST> are the capital of _______" },
-                { answer: "CIAO", clue: "How one says goodbye in <FIRST>" },
-                { answer: "CHOW", clue: "A common homophone of <FIRST>" },
-                { answer: "MUNCH", clue: "A synonym of <FIRST> that rhymes with one of three major times ones might do it" },
-                { answer: "THE SCREAM", clue: "<FIRST>'s most famous work" },
-                { answer: "SHRIEK", clue: "A synonym of <FIRST> that happens to be one of the other Villains" },
-                { answer: "SHREK", clue: "Remove a letter from <FIRST> to get a movie character" },
-                { answer: "OGRE", clue: "<FIRST> is a _______" },
-                { answer: "OGLE", clue: "Change the third letter of <FIRST> to get a verb with a sinful connotation" },
-                { answer: "GOOGLE", clue: "Prepend the first two letters of <FIRST> back onto <FIRST>" }
-            ]
+  "prevAnswer": "METALLIC",
+        "steps": [
+            {
+                "answerHash": "fa9e57473764abde136aef8921b823addd247835777ee5368b5c0e648f184595",
+                "length": 6,
+                "clue": "What is DOC OCK using to try and look up Spider-man's identity?"
+            },
+            {
+                "answerHash": "9a7d0627500e0ce9be45a3e077c22253b7122a524ffd4d62f650cf8cde596885",
+                "length": 5,
+                "clue": "The last four letters of <FIRST> are the capital of _______"
+            },
+            {
+                "answerHash": "6613ddd54d6db890ec06519714257dd4c2abe8080229c86c900b57fa7552a8ec",
+                "length": 4,
+                "clue": "How one says goodbye in <FIRST>"
+            },
+            {
+                "answerHash": "57f456a151d1e485d8fd9273e00c3457e529e5fb03659b249290c2da424d9bca",
+                "length": 4,
+                "clue": "A common homophone of <FIRST>"
+            },
+            {
+                "answerHash": "acb14b527b57029fb3351784bdfb382f7d0da22c792cafb45d15b05b712bc32b",
+                "length": 5,
+                "clue": "A synonym of <FIRST> that rhymes with one of three major times ones might do it"
+            },
+            {
+                "answerHash": "18a9af1533c471d6522095193fd22cfdb35b7d3306eaf4e7ff1fbe98c2e1c16b",
+                "length": 9,
+                "clue": "<FIRST>'s most famous work"
+            },
+            {
+                "answerHash": "a52c1d2ceba4ddf91cb7d7b6fa32f645fef359c5929af3ad4fe8da69481d95ae",
+                "length": 6,
+                "clue": "A synonym of <FIRST> that happens to be one of the other Villains"
+            },
+            {
+                "answerHash": "35933047815abde19b769e38bf5b41d0324d23306b16a84fac8281ed0b09d3bd",
+                "length": 5,
+                "clue": "Remove a letter from <FIRST> to get a movie character"
+            },
+            {
+                "answerHash": "74d43d5f84c33a3e125b56e4663bcfff6fc6a2d93189ded92a680f409d7fcecd",
+                "length": 4,
+                "clue": "<FIRST> is a _______"
+            },
+            {
+                "answerHash": "268ee79c877ec9aee9168c1ac3dca06505956b4b009e648ac5d85eb282bfcb71",
+                "length": 4,
+                "clue": "Change the third letter of <FIRST> to get a verb with a sinful connotation"
+            },
+            {
+                "answerHash": "c54704152aeb064b73f7fa8b2cc4cc1d4aff12a25bb1080186bc5872ebefc763",
+                "length": 6,
+                "clue": "Prepend the first two letters of <FIRST> back onto <FIRST>"
+            }
+        ]
         },
 {
             id: "shriek",
             title: "Shriek",
             image: "shriek.jpg",
-            prevAnswer: "HIGH NOTE",
-steps: [
-                { answer: "OPERA", clue: "What is SHRIEK using to try and look up Spider-man's identity?" },
-                { answer: "OPERATION", clue: "Append four letters to <FIRST> to get the name of a board game" },
-                { answer: "CAVITY", clue: "The first name of the only character in <FIRST>" },
-                { answer: "TOOTH", clue: "Where one might commonly experience a <FIRST>" },
-                { answer: "TOOT", clue: "Remove the last letter from <FIRST>" },
-                { answer: "ROOT", clue: "Change the first letter of <FIRST> to an \"r\" to get a word with at least two very different meanings" },
-                { answer: "BEER", clue: "<FIRST> _______ is a common beverage" },
-                { answer: "BREW", clue: "What one does to make <FIRST>" },
-                { answer: "WEB", clue: "Remove the second letter of <FIRST> and reverse the rest" }
-            ]
+            "prevAnswer": "HIGH NOTE",
+        "steps": [
+            {
+                "answerHash": "da2b3c47ce00fcb097894550e3bda77153b2a31f2764fda804f117767b8dfe28",
+                "length": 5,
+                "clue": "What is SHRIEK using to try and look up Spider-man's identity?"
+            },
+            {
+                "answerHash": "26f1d845fa3915f5b9c4b07e040ba008cf01ef8ff56ee0f76f4e89dce7c6f186",
+                "length": 9,
+                "clue": "Append four letters to <FIRST> to get the name of a board game"
+            },
+            {
+                "answerHash": "7369ef07ac9b2aaf4a04e609c722d0c8091f5dfe83bf16678d749a95b10860d8",
+                "length": 6,
+                "clue": "The first name of the only character in <FIRST>"
+            },
+            {
+                "answerHash": "ce5f3f0b925140add2b7b7195877cc1a0225db3eb324f0e0e9ea6c0d4eb05605",
+                "length": 5,
+                "clue": "Where one might commonly experience a <FIRST>"
+            },
+            {
+                "answerHash": "13148533d6e51928b91e9ff3eb529c93183ea42e8dca2385574440200858d096",
+                "length": 4,
+                "clue": "Remove the last letter from <FIRST>"
+            },
+            {
+                "answerHash": "fed4199357214dfb94724176c68a76698dbc3c2d36317a895320207ac910dea6",
+                "length": 4,
+                "clue": "Change the first letter of <FIRST> to an \"r\" to get a word with at least two very different meanings"
+            },
+            {
+                "answerHash": "95ed584e85dcbf25bceb2acbdd2b60ae660737b1547440c29fcffe733f4cb18b",
+                "length": 4,
+                "clue": "<FIRST> _______ is a common beverage"
+            },
+            {
+                "answerHash": "e72ba8dd24e3758ed488d837d9ab91102bf20bcd9bd91eb74da9643656a2ef46",
+                "length": 4,
+                "clue": "What one does to make <FIRST>"
+            },
+            {
+                "answerHash": "9dcfaae14b3986860f35731285d46834ad202fc40b9873256356ed551a1460fd",
+                "length": 3,
+                "clue": "Remove the second letter of <FIRST> and reverse the rest"
+            }
+        ]
         },
 
 {
             id: "negative",
             title: "Mr. Negative",
             image: "mrnegative.jpg",
-            prevAnswer: "FRINGE",
-steps: [
-                { answer: "EDGE", clue: "What is MR. NEGATIVE using to try and look up Spider-man's identity?" },
-                { answer: "HEDGE", clue: "Prepend a new letter onto <FIRST> to get something trimmable" },
-                { answer: "MAZE", clue: "A common puzzle word that most commonly follows <FIRST>" },
-                { answer: "PRAISE", clue: "Change the starting phoneme of <FIRST> to \"pr\" to make an appreciative word" },
-                { answer: "REVERE", clue: "A synonym of <FIRST> that is also a famous last name in US History" },
-                { answer: "REDCOAT", clue: "The kind of garment associated with <FIRST>'s words" },
-                { answer: "ART DECO", clue: "A fashionable transposal of <FIRST>" },
-                { answer: "ZYDECO", clue: "Replace the first three letters of <FIRST> with two new letters and get ready to dance" },
-                { answer: "ZODIAC", clue: "A consonantcy of <FIRST>" },
-                { answer: "SIGN", clue: "The most common word to follow <FIRST>" },
-                { answer: "DESIGNER", clue: "Surround <FIRST> with a four letter mammal to create a profession" }
-            ]
+            "prevAnswer": "FRINGE",
+        "steps": [
+            {
+                "answerHash": "b5833faa1c49a66619348169b4ec14a2df8f05ff5d1ec47aefdf95b829ffa11c",
+                "length": 4,
+                "clue": "What is MR. NEGATIVE using to try and look up Spider-man's identity?"
+            },
+            {
+                "answerHash": "f01d6435246b72d1e140bb8dd1c72d1edd8afe45984d406523cfc3c12564bd5d",
+                "length": 5,
+                "clue": "Prepend a new letter onto <FIRST> to get something trimmable"
+            },
+            {
+                "answerHash": "d9edf594c7669e0f119d2f9d5dece923d15ec44ba68c2f8da9b87b0611eab27f",
+                "length": 4,
+                "clue": "A common puzzle word that most commonly follows <FIRST>"
+            },
+            {
+                "answerHash": "ef9d5e45f48dbda4d49cb2106ef8d6febedf74aa575af03c9151e32b85700c46",
+                "length": 6,
+                "clue": "Change the starting phoneme of <FIRST> to \"pr\" to make an appreciative word"
+            },
+            {
+                "answerHash": "720a2ab341a71cb3ca665bb329e0c9a0da629eb6dc0eba14ff8183c20e5e78e9",
+                "length": 6,
+                "clue": "A synonym of <FIRST> that is also a famous last name in US History"
+            },
+            {
+                "answerHash": "78bd307c5e8534377fcf80fe436090533c41796f8f5567c7035b51080628ff8d",
+                "length": 7,
+                "clue": "The kind of garment associated with <FIRST>'s words"
+            },
+            {
+                "answerHash": "7cc231606a19cbe0dd9220b0323f5840417bbe039372dc7f7f17eeff693c3797",
+                "length": 7,
+                "clue": "A fashionable transposal of <FIRST>"
+            },
+            {
+                "answerHash": "b6d9ceae293675c3592d7493e5e07029b30765e1d3d3294f35e27f3c6bd90f60",
+                "length": 6,
+                "clue": "Replace the first three letters of <FIRST> with two new letters and get ready to dance"
+            },
+            {
+                "answerHash": "8430657f97a2cc55ffca44978fffe0537b0e4474850e83193c07d438352ee2ec",
+                "length": 6,
+                "clue": "A consonantcy of <FIRST>"
+            },
+            {
+                "answerHash": "1e2f12a3eb67501bd186592cd9510d4bfd1c07d3d68de842fd48b1d5fe7f6b4e",
+                "length": 4,
+                "clue": "The most common word to follow <FIRST>"
+            },
+            {
+                "answerHash": "a3e73b287a470e3b3fb71a76e70f890536309166061918cd8e61f32765d09d72",
+                "length": 8,
+                "clue": "Surround <FIRST> with a four letter mammal to create a profession"
+            }
+        ]
         }
     ];
     let activePuzzleId = PUZZLES.at(0).id;
@@ -168,6 +373,25 @@ steps: [
         const workspace = document.getElementById("active-workspace");
         if (!workspace) return;
 
+const allPuzzlesSolved = PUZZLES.every(function(p) {
+            const st = puzzleState[p.id];
+            return st && st.currentStepIndex >= p.steps.length;
+        });
+
+        if (allPuzzlesSolved) {
+            workspace.innerHTML =
+                '<div class="workspace-header">' +
+                    '<span>CASE CLOSED — ALL CHAINS COMPLETE</span>' +
+                    '<span>5 / 5 SOLVED</span>' +
+                '</div>' +
+                '<div class="victory-ending-box">' +
+                    '<h2 class="victory-headline">EXTRA! EXTRA! SPIDER-HUNT SOLVED!</h2>' +
+                    '<p class="victory-text">Congratulations! You have cracked all five villain word ladders and uncovered every clue across the Daily Bugle.</p>' +
+                    '<p class="victory-subtext">Thanks for playing!</p>' +
+                '</div>';
+            return;
+        }
+
         const puzzle = PUZZLES.find(function(p) { return p.id === activePuzzleId; });
         const state = puzzleState[puzzle.id];
         const isComplete = state.currentStepIndex >= puzzle.steps.length;
@@ -184,7 +408,8 @@ steps: [
 
         let entryHtml = "";
         if (!isComplete) {
-            const len = puzzle.steps.at(state.currentStepIndex).answer.replace(/\s+/g, "").length;
+            const len = puzzle.steps.at(state.currentStepIndex).length;
+
             const placeholder = len + (len === 1 ? " letter" : " letters");
             const fbClass = state.feedbackType === "error" ? "feedback-error" : "feedback-success";
             entryHtml = '<form class="entry-form" onsubmit="handleGuess(event)"><input type="text" class="entry-input" id="active-entry-input" placeholder="' + placeholder + '" autocomplete="off" /><button type="submit" class="entry-btn">Go</button></form><div class="feedback-msg ' + fbClass + '">' + escapeHtml(state.feedback) + '</div>';
@@ -222,7 +447,7 @@ steps: [
         if (inputEl) inputEl.focus();
     }
 
-    function handleGuess(event) {
+    async function handleGuess(event) {
         event.preventDefault();
         const puzzle = PUZZLES.find(function(p) { return p.id === activePuzzleId; });
         const state = puzzleState[activePuzzleId];
@@ -232,13 +457,16 @@ steps: [
         const guess = inputEl.value.trim().toUpperCase();
         if (!guess) return;
 
-        const expected = puzzle.steps.at(state.currentStepIndex).answer.trim().toUpperCase();
-        if (guess === expected) {
-            state.solvedWords.push(expected);
+        const guessHash = await sha256(guess);
+        const expectedHash = puzzle.steps.at(state.currentStepIndex).answerHash;
+
+        if (guessHash === expectedHash) {
+            state.solvedWords.push(guess);
             state.currentStepIndex += 1;
             state.feedback = "Correct!";
             state.feedbackType = "success";
             renderAll();
+
             const nextInput = document.getElementById("active-entry-input");
             if (nextInput) nextInput.focus();
         } else {
@@ -246,10 +474,20 @@ steps: [
             state.feedbackType = "error";
             renderActiveWorkspace();
             const retryInput = document.getElementById("active-entry-input");
-            if (retryInput) { retryInput.value = guess; retryInput.select(); }
+            if (retryInput) {
+                retryInput.value = guess;
+                retryInput.select();
+            }
         }
     }
-
+   async function sha256(message) {
+        const msgBuffer = new TextEncoder().encode(message);
+        const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(function(b) {
+            return b.toString(16).padStart(2, "0");
+        }).join("");
+    }
     function escapeHtml(str) {
         return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
