@@ -1,283 +1,213 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Daily Bugle - Puzzle Event</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=10">
 
-
-    </style>
+    <!-- =================================================================
+         PAGE 1 (INTRO) CONFIGURATION
+    ================================================================== -->
+    <script>
+        const PUZZLE_CONFIG = {
+            puzzleId: "intro",
+            pageNumber: "Page 1",
+            dateText: "Dec 12, 2026",
+            editionText: "CONLINE EDITION",
+            bannerImage: "Daily_Bugle_Large.jpg",
+            
+            // Headline & Sub-headline
+            headline: "Jameson offers reward for Spider-Man's True Identity!",
+            subHeadline: "Villains line up to collect bounty from prestigious publisher",
+            
+            // Left Column Flavor Text
+            leadParagraph: "That's right, New York City! Now that the Daily Bugle has finally moved online, it's time to take this nefarious Spider-Man business seriously. We are crowdsourcing the unveiling of this dangerous threat to our streets. I, J Jonah Jameson, your illustrious publisher and editor-in-chief am offering a reward for anyone who can provide definitive proof of the masked menace's real identity.",
+            
+            // Welcome Box Content
+            boxHeading: "Conline Mini-Extravaganza 2026",
+            boxParagraphs: [
+                "Welcome to the Conline Mini-Extravaganza! As you can see, the Daily Bugle has finally embraced new media, and its annoyance-in-chief, J Jonah Jameson is going after Spider-Man again! Five of Spider-Man's villains have quickly taken up the challenge. Let's use our puzzling skills to see what these five are up to and discover Spider-Man's fate. You will find five clickable individual villain puzzles in the sidebar to the right (or below). When you have solved all five, you will be presented with a final puzzle.",
+                "On every page, you will find your puzzle text in a white box like this one, with a submission box in white below the puzzle. Everything else on the page may be treated as flavor."
+            ],
+            
+            // Sidebar Exposé
+            sidebarSubjectName: "J Jonah Jameson",
+            sidebarSubjectImage: "jameson.jpg"
+        };
+    </script>
 </head>
 <body>
 
 <div class="newspaper-container">
 
-    <!-- HEADER: Drop your Daily Bugle image URL in the src below -->
+    <!-- Top Image Banner -->
     <header class="bugle-header">
-        <img class="bugle-banner-img" src="Daily_Bugle_Large.jpg" alt="THE DAILY BUGLE">
-        
-        <div class="news-meta">
-            <div>Dec 12, 2026</div>
-            <div>CONLINE EDITION</div>
-            <div>Page 1</div>
-        </div>
+        <img id="cfg-banner-img" src="" alt="The Daily Bugle" class="bugle-banner-img">
     </header>
 
-    <!-- MAIN HEADLINE -->
-    <main class="main-story">
-        <h1 class="main-headline">Jameson offers reward for Spider-Man's True Identity!</h1>
-        <h2 class="sub-headline">Villains line up to collect bounty from prestigious publisher</h2>
-    </main>
+    <!-- Metadata Bar -->
+    <div class="news-meta">
+        <span id="cfg-date"></span>
+        <span id="cfg-edition"></span>
+        <span id="cfg-page-num"></span>
+    </div>
 
-    <!-- CONTENT GRID -->
+    <!-- Main Headline Section -->
+    <section class="main-story">
+        <h1 class="main-headline" id="cfg-headline"></h1>
+        <h2 class="sub-headline" id="cfg-subheadline"></h2>
+    </section>
+
+    <!-- Two-Column Layout -->
     <div class="puzzle-grid">
-        
-        <!-- LEFT COLUMN: The Puzzle and Story -->
-        <article class="left-column">
+
+        <!-- Left Column: Intro Story & Welcome Box (No Puzzle/Submission Box) -->
+        <div class="left-column">
             <div class="puzzle-body">
-                <p>That's right, New York City! Now that the Daily Bugle has finally moved online, it's time to take this nefarious Spider-Man business seriously. We are crowdsourcing the unveiling of this dangerous threat to our streets. I, J Jonah Jameson, your illustrious publisher and editor-in-chief am offering a reward for anyone who can provide definitive proof of the masked menace's real identity.</p>
-                
-                <!-- PUZZLE BOX: Edit your riddle or puzzle clue here -->
-                <div class="puzzle-box">
-                   <h3 style="text-align:center">Conline Mini-Extravaganza 2026</h3>
-                	<p>Welcome to the Conline Mini-Extravaganza! As you can see, the Daily Bugle has finally embraced new media, and its annoyance-in-chief, J Jonah Jameson is going 			after Spider-Man again! Five of Spider-Man's villains have quickly taken up the challenge. Let's use our puzzling skills to see what these five are up to and discover 			Spider-Man's fate. You will find five clickable individual villain puzzles in the sidebar to the right (or below). When you have solved all five, you will be presented with a final puzzle. </p>
-			<p>On every page, you will find your puzzle text in a white box like this one, with a submission box in white below the puzzle. Everything else on the page may be treated as flavor.
-                </div>
-
-
+                <p id="cfg-lead-paragraph"></p>
             </div>
 
-            <!-- ANSWER SUBMISSION BOX
-            <div class="answer-section">
-                <label for="puzzle-answer" style="font-weight: bold; display: block; margin-bottom: 5px;">ENTER DECODED ANSWER:</label>
-                <input type="text" id="puzzle-answer" class="answer-input" placeholder="Type answer here...">
+            <div class="puzzle-box">
+                <h3 class="sidebar-heading" id="cfg-box-heading"></h3>
+                <div id="cfg-box-body"></div>
             </div>
--->
-        </article>
+        </div>
 
-        <!-- RIGHT COLUMN: Side Info & Flavor Text -->
+
+        <!-- Right Column: Exposé Portrait & Read More Navigation -->
         <aside class="right-column">
-            <h3 class="sidebar-heading" text-align: center;>Expos&eacute;!</h3>
-            <img src="jameson.jpg" style="width: 100%; height: auto; border: 1px solid #111111;">
-		<p style="font-size: 14px; margin-bottom: 20px; text-align: center;">
-                <strong>J Jonah Jameson</strong><br>
-                </p>
+            <h3 class="sidebar-heading" id="cfg-villain-heading">Expos&eacute;!</h3>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <img id="cfg-villain-img" src="" alt="">
+                <strong id="cfg-sidebar-name"></strong>
+            </div>
 
             <h3 class="sidebar-heading">Read more!</h3>
-             <ul style="font-size: 14px; padding-left: 20px;">
-                <li id="nav-intro">Page 1: Intro </li>
-		<li id="nav-p2">Page 2: Shriek</li>
-                <li id="nav-p3">Page 3: Kraven</li>
-                <li id="nav-p4">Page 4: Mr. Negative</li>
-                <li id="nav-p5">Page 5: Doc Ock</li>
-                <li id="nav-p6">Page 6: Chameleon</li>
-		<li id="nav-p7">Page 7: Hunting for Spiders</li>
+            <ul style="list-style: none; padding: 0; margin: 10px 0 20px 0; font-size: 14px;">
+                <li><a href="spiderhunt_intro.html" style="color: #111;">Page 1: Intro</a> <span id="status-intro"></span></li>
+                <li><a href="spiderhunt_shriek.html" style="color: #111;">Page 2: Shriek</a> <span id="status-shriek"></span></li>
+                <li><a href="spiderhunt_kraven.html" style="color: #111;">Page 3: Kraven</a> <span id="status-kraven"></span></li>
+                <li><a href="spiderhunt_negative.html" style="color: #111;">Page 4: Mr. Negative</a> <span id="status-negative"></span></li>
+                <li><a href="spiderhunt_docock.html" style="color: #111;">Page 5: Doc Ock</a> <span id="status-docock"></span></li>
+                <li><a href="spiderhunt_chameleon.html" style="color: #111;">Page 6: Chameleon</a> <span id="status-chameleon"></span></li>
+                <li><a href="hunting_for_spiders.html" style="color: #111;">Page 7: Hunting for Spiders</a> <span id="status-final"></span></li>
             </ul>
-
-            <!-- 
-
-            <div class="advertisement">
-             <strong>OSCORP INDUSTRIES</strong><br>
-                Building a safer tomorrow, today.<br>
-                <span style="font-size: 11px;">(Not responsible for any accidental radioactive mutations)</span>
-				
-            </div>-->
         </aside>
 
     </div>
-
 </div>
 
-
-
 <script>
-	const TOTAL_PAGES = 7;
-	const PUZZLE_COUNT = 7;
-	const CURRENT_PUZZLE_NUM = 1; // Change this to 2 on page 2, 3 on page 3, etc.
-     
-	// CORRECT_ANSWER_HASH is the hash for THIS page's puzzle answer: 
-	const CORRECT_ANSWER_HASH = "29534c66c4b0ce18f140973f06d8c746eb687fac1d80a4bc5e862faf7bbdcc0f";
+    const SEQUENTIAL_LOCK = false;
 
+    function applyIntroConfig() {
+        document.getElementById("cfg-banner-img").src = PUZZLE_CONFIG.bannerImage;
+        document.getElementById("cfg-date").textContent = PUZZLE_CONFIG.dateText;
+        document.getElementById("cfg-edition").textContent = PUZZLE_CONFIG.editionText;
+        document.getElementById("cfg-page-num").textContent = PUZZLE_CONFIG.pageNumber;
+        document.getElementById("cfg-headline").textContent = PUZZLE_CONFIG.headline;
+        document.getElementById("cfg-subheadline").textContent = PUZZLE_CONFIG.subHeadline;
 
-	// Automatically initialize the 6 puzzle variables if they don't exist yet
+        document.getElementById("cfg-lead-paragraph").textContent = PUZZLE_CONFIG.leadParagraph;
+        document.getElementById("cfg-box-heading").textContent = PUZZLE_CONFIG.boxHeading;
 
-	localStorage.clear(); // Wipes all stored answers so you can test from scratch
+        const boxBody = document.getElementById("cfg-box-body");
+        boxBody.innerHTML = PUZZLE_CONFIG.boxParagraphs.map(function(text) {
+            return "<p>" + text + "</p>";
+        }).join("");
 
-	for (let i = 2; i <= PUZZLE_COUNT; i++) {
-    if (localStorage.getItem(`puzzle_${i}_solved`) === null) {
-        localStorage.setItem(`puzzle_${i}_solved`, "false");
-	    }
-	}
-
-	
-    // Helper function to turn plain text into a secure SHA-256 scrambled string
-    async function sha256(message) {
-        const msgBuffer = new TextEncoder().encode(message);                    
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        document.getElementById("cfg-villain-heading").textContent = "Expos\u00E9!";
+        const subjectImg = document.getElementById("cfg-villain-img");
+        subjectImg.src = PUZZLE_CONFIG.sidebarSubjectImage;
+        subjectImg.alt = PUZZLE_CONFIG.sidebarSubjectName;
+        document.getElementById("cfg-sidebar-name").textContent = PUZZLE_CONFIG.sidebarSubjectName;
     }
 
- // --- 1. INITIALIZE GLOBAL HUNT STORAGE ---
-    for (let i = 2; i <= PUZZLE_COUNT; i++) {
-        if (localStorage.getItem(`puzzle_${i}_solved`) === null) {
-            localStorage.setItem(`puzzle_${i}_solved`, "false");
-        	}
-    	}
+    function getSolvedAnswer(id) {
+        return localStorage.getItem("spiderhunt_solved_" + id) || localStorage.getItem("bugle_solved_" + id);
+    }
 
-// --- 2. DYNAMIC SIDEBAR TEXT GENERATION FUNCTION ---
-       function updateSidebarProgress() {
-        // 1. Explicitly map each puzzle number to its target file name
-        const puzzleFiles = {
-            1: "spiderhunt_intro.html",
-	    2: "spiderhunt_shriek.html",
-            3: "spiderhunt_kraven.html",
-            4: "spiderhunt_mrnegative.html",
-            5: "spiderhunt_docock.html",
-            6: "spiderhunt_chameleon.html",
-            7: "spiderhunt_huntingforspiders.html"
-        };
-
-        // Explicitly map each puzzle number directly to its clean display name
-        const puzzleNames = {
-            2: "Page 2: Shriek",
-            3: "Page 3: Kraven",
-            4: "Page 4: Mr. Negative",
-            5: "Page 5: Doc Ock",
-            6: "Page 6: Chameleon",
-            7: "Page 7: Hunting for Spiders"
-        };
-
-// Helper function to build a styled hyperlink block
-        function makeLink(num, content) {
-            return `<a href="${puzzleFiles[num]}" style="color: inherit; text-decoration: none; border-bottom: 1px dotted #111;">${content}</a>`;
+    function updateSidebarProgress() {
+        // 1. Page 1: Intro is always marked as [📖 READ] upon visiting
+        localStorage.setItem("spiderhunt_intro_read", "true");
+        const introEl = document.getElementById("status-intro");
+        if (introEl) {
+            introEl.textContent = "[📖 READ]";
+            introEl.style.color = "#666666";
+            introEl.style.fontSize = "12px";
+            introEl.style.fontWeight = "bold";
         }
 
+        // 2. Pages 2-6: Villain statuses
+        const villains = ["shriek", "kraven", "negative", "docock", "chameleon"];
+        let allVillainsSolved = true;
 
-        // Handle Intro Page Layout Separately
-        const introItem = document.getElementById('nav-intro');
-                if (introItem) {
-            if (CURRENT_PUZZLE_NUM === 1) {
-                // If on the intro page, show active status but keep the link active
-                const introLink = makeLink(1, "Page 1: Intro");
-                introItem.innerHTML = `<span>${introLink}</span> <strong><span style="color: #0056b3;">[⚡ ACTIVE]</span></strong>`;
+        villains.forEach(function(id, index) {
+            const el = document.getElementById("status-" + id);
+            if (!el) return;
+
+            const linkEl = el.parentElement ? el.parentElement.querySelector("a") : null;
+            const solvedVal = getSolvedAnswer(id);
+
+            let isUnlocked = true;
+            if (SEQUENTIAL_LOCK && index > 0) {
+                const prevId = villains.at(index - 1);
+                isUnlocked = Boolean(getSolvedAnswer(prevId));
+            }
+
+            el.style.fontSize = "12px";
+            el.style.fontWeight = "bold";
+
+            if (solvedVal) {
+                el.textContent = "[✅ SOLVED]";
+                el.style.color = "#155724";
+            } else if (isUnlocked) {
+                allVillainsSolved = false;
+                el.textContent = "[🔓 UNLOCKED]";
+                el.style.color = "#666666";
             } else {
-                // If on any other page, keep the link active and mark it as read
-                const introLink = makeLink(1, "Page 1: Intro");
-                introItem.innerHTML = `<span>${introLink}</span> <span style="color: #6c757d;">[📖 READ]</span>`;
-            }
-        }
-
-	// Check if all puzzles from 2 to 6 are entirely solved
-        let middlePuzzlesSolved = true;
-        for (let m = 2; m <= 6; m++) {
-            if (localStorage.getItem(`puzzle_${m}_solved`) !== "true") {
-                middlePuzzlesSolved = false;
-                break;
-            }
-        }
-        
-	//Update for each of puzzles 2-6	
-	for (let i =2 ; i <= PUZZLE_COUNT; i++) {
-            const listItem = document.getElementById(`nav-p${i}`);
-            if (!listItem) continue; // Skip if the list item isn't on this page
-
-            const isSolved = localStorage.getItem(`puzzle_${i}_solved`) === "true";
-            
-            // Logic to determine status text
-            if (isSolved) {
-                const linkText = makeLink(i, `${puzzleNames[i]}`);
-                listItem.innerHTML = `<span>${linkText}</span> <strong><span style="color: #155724;">[✅ SOLVED]</span></strong>`;
-            } else if (i === CURRENT_PUZZLE_NUM) {
-                listItem.innerHTML = `<span>${puzzleNames[i]}</span> <strong><span style="color: #0056b3;">[⚡ ACTIVE]</span></strong>`;
-            } else if (i === 7) {
-                // Puzzle 7 lock logic
-                if (middlePuzzlesSolved) {
-                    const linkText = makeLink(i, `${puzzleNames[i]}`);
-                    listItem.innerHTML = `<span>${linkText}</span> <span style="color: #6c757d;">[🔓 UNLOCKED]</span>`;
-                } else {
-                    // No link function used here—remains text only while locked
-                    listItem.innerHTML = `<span>Hidden</span> <span style="color: #b22222; font-style: italic;">[🔒 LOCKED]</span>`;
+                allVillainsSolved = false;
+                el.textContent = "[🔒 LOCKED]";
+                el.style.color = "#888888";
+                if (linkEl) {
+                    linkEl.style.pointerEvents = "none";
+                    linkEl.style.color = "#888888";
+                    linkEl.style.textDecoration = "none";
                 }
+            }
+        });
+
+        // 3. Page 7: Final Hunt status
+        const finalEl = document.getElementById("status-final");
+        if (finalEl) {
+            const finalLink = finalEl.parentElement ? finalEl.parentElement.querySelector("a") : null;
+            const finalSolved = Boolean(getSolvedAnswer("final"));
+
+            finalEl.style.fontSize = "12px";
+            finalEl.style.fontWeight = "bold";
+
+            if (finalSolved) {
+                finalEl.textContent = "[✅ SOLVED]";
+                finalEl.style.color = "#155724";
+            } else if (allVillainsSolved) {
+                finalEl.textContent = "[🔓 UNLOCKED]";
+                finalEl.style.color = "#666666";
             } else {
-                // Puzzles 2-6 default to unlocked state from the start
-                const linkText = makeLink(i, `${puzzleNames[i]}`);
-                listItem.innerHTML = `<span>${linkText}</span> <span style="color: #6c757d;">[🔓 UNLOCKED]</span>`;
+                finalEl.textContent = "[🔒 LOCKED]";
+                finalEl.style.color = "#888888";
+                if (finalLink) {
+                    finalLink.style.pointerEvents = "none";
+                    finalLink.style.color = "#888888";
+                    finalLink.style.textDecoration = "none";
+                }
             }
         }
-
-console.log("Current Hunt Memory State:", {
-    p2: localStorage.getItem("puzzle_2_solved"),
-    p3: localStorage.getItem("puzzle_3_solved"),
-    p4: localStorage.getItem("puzzle_4_solved"),
-    p5: localStorage.getItem("puzzle_5_solved"),
-    p6: localStorage.getItem("puzzle_6_solved")
-});
-
-
     }
 
-    // 3. Set up the Answer Checker listener
-	const answerInputField = document.getElementById('puzzle-answer');
-    
-    // Only run this code block if the puzzle-answer element actually exists on the page
-    if (answerInputField) {
-    document.getElementById('puzzle-answer').addEventListener('keypress', async function(e) {
-        // Trigger verification when the player hits the "Enter" key
-        if (e.key === 'Enter') {
-            const inputField = e.target;
-            
-            // Clean up input: remove accidental spaces, convert to lowercase
-            const cleanUserAnswer = inputField.value.toLowerCase().replace(/[^a-z]/g, '');
-            
-            if (!cleanUserAnswer) return; // Do nothing if field is empty
-
-            // Encrypt the user's guess
-            const hashedUserGuess = await sha256(cleanUserAnswer);
-
-            // Create or grab a vintage-styled feedback alert element
-            let feedback = document.getElementById('bugle-feedback');
-            if (!feedback) {
-                feedback = document.createElement('div');
-                feedback.id = 'bugle-feedback';
-                feedback.style.marginTop = '15px';
-                feedback.style.padding = '10px';
-                feedback.style.fontFamily = "'Courier Prime', monospace";
-                feedback.style.fontWeight = 'bold';
-                feedback.style.textAlign = 'center';
-                feedback.style.border = '1px solid #111';
-                inputField.parentNode.appendChild(feedback);
-            }
-
-            // 3. Check the hashes against each other
-            if (hashedUserGuess === CORRECT_ANSWER_HASH) {
-                localStorage.setItem(`puzzle_${CURRENT_PUZZLE_NUM}_solved`, "true");
-		updateSidebarProgress();
-		// Correct styling: 
-                feedback.style.backgroundColor = '#d4edda';
-                feedback.style.color = '#155724';
-                feedback.innerHTML = "📣 Great job! Unfortunately, Shriek sang just outside the range of human hearing...and no one responded.";
-                
-            } else {
-                // Incorrect 
-                feedback.style.backgroundColor = '#f8d7da';
-                feedback.style.color = '#721c24';
-                feedback.innerHTML = "Incorrect. Try again.";
-                updateSidebarProgress();
-
-                // Shake the answer box for a fun mechanical feel
-                inputField.style.borderColor = '#721c24';
-                setTimeout(() => { inputField.style.borderColor = '#111'; }, 1000);
-            }
-        }
-    })};
-document.addEventListener("DOMContentLoaded", updateSidebarProgress);
-
+    applyIntroConfig();
+    updateSidebarProgress();
 </script>
-
-
 
 </body>
 </html>

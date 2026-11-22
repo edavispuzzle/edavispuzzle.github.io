@@ -341,4 +341,25 @@ body.raddle-embed { background-color: #ffffff; padding: 15px; margin: 0; }
     opacity: 1;
 }
 
+/* --- SIDEBAR EXPOSÉ PORTRAIT & CAPTION --- */
+#cfg-villain-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top center;
+    border: 2px solid #111111;
+    box-sizing: border-box;
+    margin: 0 0 8px 0;
+}
 
+#cfg-sidebar-name {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    clear: both;
+}
