@@ -29,7 +29,7 @@
             pdfFile: "docock.pdf",
             googleSheetCopyUrl: "https://docs.google.com/spreadsheets/d/1Rmhl_yGaPna9k2aYy9PQkztP7G0WPifxArpXhfVytpA/copy",
             answerPrompt: "Doc Ock is reaching out for an answer:",
-            correctAnswerHash: "a70a59b3981af385be12b293222f27848fbbb0387d05504b02c7f2012d02e67f",
+            correctAnswerHash: "e42d7dbe557d1aeb152d22165c998707630fbc6e88c7c8a6e10d0e3271e15c4f",
             successMessage: "Great work! Currently, the results of Doc Ock's research are undergoing peer review and may be publishable next year."
         };
     </script>
@@ -242,14 +242,16 @@
         e.preventDefault();
         const inputField = document.getElementById("answer-input");
         const feedback = document.getElementById("answer-feedback");
-        const guess = inputField.value.trim().toUpperCase();
-        if (!guess) return;
+        
+        // Convert to uppercase and strip all spaces, numbers, and punctuation (keeps A-Z only)
+        const normalizedGuess = inputField.value.toUpperCase().replace(/[^A-Z]/g, "");
+        if (!normalizedGuess) return;
 
-        const guessHash = await hashAnswer(guess);
+        const guessHash = await hashAnswer(normalizedGuess);
         feedback.style.display = "block";
 
         if (guessHash === PUZZLE_CONFIG.correctAnswerHash) {
-            localStorage.setItem("spiderhunt_solved_" + PUZZLE_CONFIG.puzzleId, guess);
+            localStorage.setItem("spiderhunt_solved_" + PUZZLE_CONFIG.puzzleId, normalizedGuess);
             feedback.style.backgroundColor = "#d4edda";
             feedback.style.color = "#155724";
             feedback.style.border = "1px solid #155724";
