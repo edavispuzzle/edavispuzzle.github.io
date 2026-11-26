@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Bugle - Reset Hunt Progress</title>
+    <link rel="stylesheet" href="style.css?v=13">
+</head>
+<body>
+
+<div class="newspaper-container" style="max-width: 600px; text-align: center;">
+    <h1 class="main-headline" style="font-size: 32px;">Hunt Progress Reset</h1>
+    <p class="sub-headline">Testing Utility for The Daily Bugle</p>
+    <hr>
+
+    <div class="puzzle-box" style="text-align: left;">
+        <h3 class="sidebar-heading">Current Saved State</h3>
+        <ul id="state-list" style="list-style: none; padding: 0; margin: 12px 0;"></ul>
+    </div>
+
+    <div class="puzzle-actions-grid">
+        <button type="button" id="reset-btn" class="puzzle-action-btn" onclick="resetHuntState()">
+            Reset All Progress
+        </button>
+        <a href="spiderhunt_intro.html" class="puzzle-action-btn">
+            Return to Page 1: Intro
+        </a>
+    </div>
+
+    <div id="reset-status" style="margin-top: 12px; font-weight: bold; color: #155724; min-height: 20px;"></div>
+</div>
+
+<script>
+    const KEYS_TO_CLEAR = [
+        "spiderhunt_intro_read",
+        "spiderhunt_solved_shriek",
+        "spiderhunt_solved_kraven",
+        "spiderhunt_solved_negative",
+        "spiderhunt_solved_docock",
+        "spiderhunt_solved_chameleon",
+        "spiderhunt_solved_final"
+    ];
+
+    function renderSavedState() {
+        const list = document.getElementById("state-list");
+        if (!list) return;
+
+        list.innerHTML = KEYS_TO_CLEAR.map(function(key) {
+            const val = localStorage.getItem(key);
+            const displayVal = val ? "✅ " + val : "⬜ Empty";
+            return "<li style='display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed #ccc;'>" +
+                "<span><strong>" + key + "</strong></span>" +
+                "<span>" + displayVal + "</span>" +
+            "</li>";
+        }).join("");
+    }
+
+    function resetHuntState() {
+        KEYS_TO_CLEAR.forEach(function(key) {
+            localStorage.removeItem(key);
+        });
+        // Also clear any legacy bugle_solved_ keys if present
+        Object.keys(localStorage).forEach(function(k) {
+            if (k.startsWith("spiderhunt_") || k.startsWith("bugle_")) {
+                localStorage.removeItem(k);
+            }
+        });
+
+        renderSavedState();
+        const status = document.getElementById("reset-status");
+        if (status) {
+            status.textContent = "All hunt progress cleared!";
+        }
+    }
+
+    renderSavedState();
+</script>
+
+</body>
+</html>
